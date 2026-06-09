@@ -7,18 +7,20 @@ una IA o una persona nueva debería poder entrar al repo con **cero contexto pre
 
 Si llegás sin contexto, el orden recomendado es:
 
-1. `context/profile.yaml`
-2. `context/current-state.md`
-3. `context/decision-rules.md`
-4. `context/data-sources.yaml`
-5. `performance/README.md`
-6. `performance/data/performance_log.csv`
-7. `medical/README.md`
+1. `context/health-brief.md`
+2. `context/profile.yaml`
+3. `context/current-state.md`
+4. `context/decision-rules.md`
+5. `context/data-sources.yaml`
+6. `performance/README.md`
+7. `performance/data/performance_log.csv`
+8. `medical/README.md`
 
 ## Principio de diseño
 
 Separar capas. No mezclar todo en un solo archivo.
 
+- **Health brief** → resumen ejecutivo para onboarding rápido.
 - **Profile** → datos relativamente estables del usuario que cambian lento.
 - **Current state** → objetivos, prioridades, protocolos y contexto activo.
 - **Decision rules** → cómo interpretar y cómo no interpretar los datos.

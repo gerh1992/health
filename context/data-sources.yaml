@@ -4,6 +4,9 @@ sources:
   - name: health_repo_root
     path: /home/ubuntu/.hermes/data/health
     role: canonical repository root
+  - name: health_brief
+    path: context/health-brief.md
+    role: fastest high-signal onboarding summary for a new AI or human reader
   - name: user_profile
     path: context/profile.yaml
     role: stable user facts relevant for health/performance decisions
@@ -31,6 +34,7 @@ sources:
     role: reserved area for labs, diagnoses, injuries, medication, reports, and other health evidence
     status: scaffold_only
 read_order_for_new_agent:
+  - context/health-brief.md
   - context/profile.yaml
   - context/current-state.md
   - context/decision-rules.md

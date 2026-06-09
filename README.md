@@ -31,6 +31,7 @@ health/
   .gitignore
   context/
     README.md
+    health-brief.md
     profile.yaml
     current-state.md
     decision-rules.md
@@ -51,14 +52,15 @@ health/
 ```
 
 ## Orden de lectura recomendado para una IA o persona nueva
-1. `context/profile.yaml`
-2. `context/current-state.md`
-3. `context/decision-rules.md`
-4. `context/data-sources.yaml`
-5. `performance/README.md`
-6. `performance/rules/SYSTEM_RULES.md`
-7. `performance/data/performance_log.csv`
-8. `medical/README.md`
+1. `context/health-brief.md`
+2. `context/profile.yaml`
+3. `context/current-state.md`
+4. `context/decision-rules.md`
+5. `context/data-sources.yaml`
+6. `performance/README.md`
+7. `performance/rules/SYSTEM_RULES.md`
+8. `performance/data/performance_log.csv`
+9. `medical/README.md`
 
 ## Workflow acordado
 1. `git pull --rebase`
