@@ -1,81 +1,81 @@
 Date,Category,Activity,Entry_Type,Session_Tag,Volume_Detail,RPE,HRV_Morning,RHR_Night,Comments
 2026-05-04,Strength,Gym Session,session,High,Back Squat: 90kg - 3x4,8,-,-,Tercer entrenamiento despues de 2 meses.
 2026-05-04,Strength,Back Squat,kpi,High,90kg - 3x4,8,-,-,Tercer entrenamiento despues de 2 meses.
-2026-05-05,Padel,Padel Session,session,Match,Match: 1h 30m - Loss,9,-,-,"Jugue muy mal. Erre muchisimo y al mismo tiempo no arriesgue tanto, ultimamente no vengo mejorando mucho y no se como hacer."
-2026-05-06,Biometrics,Sleep,biometrics,-,7h 2m,-,52,62,"Me siento un poco cansado en las piernas de ayer, estoy dudando si ir al gym y si voy cuan intenso debo ir."
+2026-05-05,Padel,Padel Session,session,Match,Loss | 1h 30m,9,-,-,"Jugue muy mal. Erre muchisimo y al mismo tiempo no arriesgue tanto, ultimamente no vengo mejorando mucho y no se como hacer."
+2026-05-06,Biometrics,Sleep,biometrics,-,7.03,-,52,62,"Me siento un poco cansado en las piernas de ayer, estoy dudando si ir al gym y si voy cuan intenso debo ir."
 2026-05-06,Recovery,Recovery Session,session,Recovery,Mobility,5,-,-,Circuito de movilidad y estiramientos en el gym.
-2026-05-07,Biometrics,Sleep,biometrics,-,6h 8m,-,39,64,"Me siento bastante bien, mucho mejor que ayer, lo que si cene mucho, pesado y bastante tarde, creo que afecto las metricas de sueño eso."
-2026-05-07,Padel,Padel Session,session,Match,Match: Loss,8,-,-,"Partido de padel perdido ayer, jugue pesimo de nuevo!."
-2026-05-08,Biometrics,Sleep,biometrics,-,8h 54m,-,47,63,"Muy buen descanso, RHR bajo y HRV recuperandose."
+2026-05-07,Biometrics,Sleep,biometrics,-,6.13,-,39,64,"Me siento bastante bien, mucho mejor que ayer, lo que si cene mucho, pesado y bastante tarde, creo que afecto las metricas de sueño eso."
+2026-05-07,Padel,Padel Session,session,Match,Loss | 1h 30m,8,-,-,"Partido de padel perdido ayer, jugue pesimo de nuevo!."
+2026-05-08,Biometrics,Sleep,biometrics,-,8.9,-,47,63,"Muy buen descanso, RHR bajo y HRV recuperandose."
 2026-05-08,Strength,Gym Session,session,Low,Back Squat: 50kg - 4x10; Deadlift: 50kg - 4x10,8,-,-,Lo hice para ir agregando capacidad de trabajo.
 2026-05-08,Strength,Back Squat,kpi,Low,50kg - 4x10,8,-,-,Lo hice para ir agregando capacidad de trabajo.
 2026-05-08,Strength,Deadlift,kpi,Low,50kg - 4x10,8,-,-,
-2026-05-09,Biometrics,Sleep,biometrics,-,5h 45m,-,46,69,Entrene modalidad mas volumen para acumular carga de trabajo
-2026-05-10,Biometrics,Sleep,biometrics,-,7h 41m,-,-,-,"Fue post boliche, dormi muy mal porque tome mucho y me acoste 6AM"
-2026-05-11,Biometrics,Sleep,biometrics,-,6h 39m,-,68,60,Me levante bastante bien
+2026-05-09,Biometrics,Sleep,biometrics,-,5.75,-,46,69,Entrene modalidad mas volumen para acumular carga de trabajo
+2026-05-10,Biometrics,Sleep,biometrics,-,7.68,-,-,-,"Fue post boliche, dormi muy mal porque tome mucho y me acoste 6AM"
+2026-05-11,Biometrics,Sleep,biometrics,-,6.65,-,68,60,Me levante bastante bien
 2026-05-11,Strength,Gym Session,session,High,Back Squat: 100kg - 3x4; Pull-ups: 3x8 (sin peso),8,-,-,Me senti bien y estoy cerca de volver a mis numeros viejos.
 2026-05-11,Strength,Back Squat,kpi,High,100kg - 3x4,8,-,-,Me senti bien y estoy cerca de volver a mis numeros viejos.
-2026-05-11,Strength,Pull-ups,kpi,High,3x8 (sin peso),8,-,-,
-2026-05-12,Biometrics,Sleep,biometrics,-,7h 6m,-,64,62,Me levante muy bien para haber entrenado pesado
-2026-05-12,Padel,Padel Session,session,Match,Match: Win,7,-,-,Volvi a jugar bien despues de mucho tiempo.
-2026-05-13,Biometrics,Sleep,biometrics,-,7h 29m,-,42,67,Siento que el lomo post padel me hizo dormir pesado
+2026-05-11,Strength,Pull-ups,kpi,High,0kg - 3x8,8,-,-,
+2026-05-12,Biometrics,Sleep,biometrics,-,7.1,-,64,62,Me levante muy bien para haber entrenado pesado
+2026-05-12,Padel,Padel Session,session,Match,Win | 1h 30m,7,-,-,Volvi a jugar bien despues de mucho tiempo.
+2026-05-13,Biometrics,Sleep,biometrics,-,7.48,-,42,67,Siento que el lomo post padel me hizo dormir pesado
 2026-05-13,Recovery,Recovery Session,session,Recovery,Gym Recovery,4,-,-,
-2026-05-14,Biometrics,Sleep,biometrics,-,9h 4m,-,56,62,me siento muy bien despues de dormir bien ayer
+2026-05-14,Biometrics,Sleep,biometrics,-,9.07,-,56,62,me siento muy bien despues de dormir bien ayer
 2026-05-14,Strength,Gym Session,session,Low,Back Squat: 60kg - 3x10; Deadlift: 60kg - 3x10; Calves Press Machine: 100kg - 3x10,7,-,-,
 2026-05-14,Strength,Back Squat,kpi,Low,60kg - 3x10,7,-,-,
 2026-05-14,Strength,Deadlift,kpi,Low,60kg - 3x10,7,-,-,
 2026-05-14,Strength,Calves Press Machine,accessory,Low,100kg - 3x10,7,-,-,
-2026-05-15,Biometrics,Sleep,biometrics,-,7h 7m,-,49,62,me siento bien
-2026-05-16,Biometrics,Sleep,biometrics,-,7h 45m,-,53,62,
+2026-05-15,Biometrics,Sleep,biometrics,-,7.12,-,49,62,me siento bien
+2026-05-16,Biometrics,Sleep,biometrics,-,7.75,-,53,62,
 2026-05-16,Strength,Gym Session,session,High,Back Squat: 100kg - 3x4,8,-,-,gym lower
 2026-05-16,Strength,Back Squat,kpi,High,100kg - 3x4,8,-,-,
-2026-05-17,Biometrics,Sleep,biometrics,-,8h 40m,-,58,59,
+2026-05-17,Biometrics,Sleep,biometrics,-,8.67,-,58,59,
 2026-05-17,Recovery,Recovery Session,session,Recovery,Caminata,-,-,-,caminata
-2026-05-18,Biometrics,Sleep,biometrics,-,7h 0m,-,55,61,
+2026-05-18,Biometrics,Sleep,biometrics,-,7,-,55,61,
 2026-05-18,Strength,Gym Session,session,High,Back Squat: 100kg - 3x4,8,-,-,gym lower
 2026-05-18,Strength,Back Squat,kpi,High,100kg - 3x4,8,-,-,
-2026-05-19,Biometrics,Sleep,biometrics,-,6h 0m,-,53,60,
-2026-05-19,Padel,Padel Session,session,Match,Match: Win,7,-,-,
-2026-05-20,Biometrics,Sleep,biometrics,-,6h 0m,-,49,64,
+2026-05-19,Biometrics,Sleep,biometrics,-,6,-,53,60,
+2026-05-19,Padel,Padel Session,session,Match,Win | 1h 30m,7,-,-,
+2026-05-20,Biometrics,Sleep,biometrics,-,6,-,49,64,
 2026-05-20,Recovery,Recovery Session,session,Recovery,Caminata,-,-,-,caminata
-2026-05-21,Biometrics,Sleep,biometrics,-,9h 30m,-,48,64,
-2026-05-21,Padel,Padel Session,session,Match,Match: Win,-,-,-,gané
-2026-05-22,Biometrics,Sleep,biometrics,-,7h 15m,-,46,64,Calidad normal; energia 7/10
-2026-05-22,Padel,Padel Session,session,Match,Match: Win,-,-,-,gané
+2026-05-21,Biometrics,Sleep,biometrics,-,9.5,-,48,64,
+2026-05-21,Padel,Padel Session,session,Match,Win | 1h 30m,-,-,-,gané
+2026-05-22,Biometrics,Sleep,biometrics,-,7.25,-,46,64,Calidad normal; energia 7/10
+2026-05-22,Padel,Padel Session,session,Match,Win | 1h 30m,-,-,-,gané
 2026-05-23,Recovery,Recovery Session,session,Recovery,Caminata 45 minutos,-,-,-,Resaca; muy tranquilo; tome los suplementos
-2026-05-24,Biometrics,Sleep,biometrics,-,7.8h,-,53,68,Calidad buena; energia baja; todavia no estoy recuperado de la salida de anteayer a la noche
-2026-05-25,Biometrics,Sleep,biometrics,-,7h,-,63,59,Calidad 9/10
+2026-05-24,Biometrics,Sleep,biometrics,-,7.8,-,53,68,Calidad buena; energia baja; todavia no estoy recuperado de la salida de anteayer a la noche
+2026-05-25,Biometrics,Sleep,biometrics,-,7.0,-,63,59,Calidad 9/10
 2026-05-25,Recovery,Recovery Session,session,Recovery,No entrené,-,-,-,Tome todos los suplementos y el retinol
-2026-05-26,Biometrics,Sleep,biometrics,-,8h,-,55,61,Calidad buena; energia 9
-2026-05-26,Padel,Padel Session,session,Match,Solo padel,-,-,-,Tome todos los suplementos (incluso los nocturnos)
-2026-05-27,Biometrics,Sleep,biometrics,-,7.5h,-,54,61,Calidad buena; energia 8
+2026-05-26,Biometrics,Sleep,biometrics,-,8.0,-,55,61,Calidad buena; energia 9
+2026-05-26,Padel,Padel Session,session,Match,- | 1h 30m,-,-,-,Tome todos los suplementos (incluso los nocturnos)
+2026-05-27,Biometrics,Sleep,biometrics,-,7.5,-,54,61,Calidad buena; energia 8
 2026-05-27,Strength,Gym Session,session,High,Back Squat: 110kg x3 top set; 100kg 2x4; RDL: 60kg 3x5; Calves Press: 160kg 3x6; Box Jumps: 3x3; Core,-,-,-,Piernas high; me senti bastante bien
-2026-05-27,Strength,Back Squat,kpi,High,110kg x3 top set; 100kg 2x4,-,-,-,Hacia meses que no metia 110
-2026-05-28,Biometrics,Sleep,biometrics,-,7h,-,52,60,Calidad buena; energia 8; cansancio mas mental que muscular
-2026-05-28,Padel,Padel Session,session,Match,Match,-,-,-,Tome todos los suplementos; intensidad normal; no senti mucha carga extra
-2026-05-29,Biometrics,Sleep,biometrics,-,6h,-,50,64,Calidad normal; energia 8/10; no siento que haya dormido mal pero los datos dicen otra cosa
-2026-05-31,Biometrics,Sleep,biometrics,-,9.5h,-,34,78,Calidad 2; energia 2
+2026-05-27,Strength,Back Squat,kpi,High,110kg x3 top set; 100kg - 2x4,-,-,-,Hacia meses que no metia 110
+2026-05-28,Biometrics,Sleep,biometrics,-,7.0,-,52,60,Calidad buena; energia 8; cansancio mas mental que muscular
+2026-05-28,Padel,Padel Session,session,Match,- | 1h 30m,-,-,-,Tome todos los suplementos; intensidad normal; no senti mucha carga extra
+2026-05-29,Biometrics,Sleep,biometrics,-,6.0,-,50,64,Calidad normal; energia 8/10; no siento que haya dormido mal pero los datos dicen otra cosa
+2026-05-31,Biometrics,Sleep,biometrics,-,9.5,-,34,78,Calidad 2; energia 2
 2026-05-31,Recovery,Recovery Session,session,Recovery,No hice nada,-,-,-,Ayer tome mucho; me senti muy decaido; tome todos los suplementos y retinol
-2026-06-01,Biometrics,Sleep,biometrics,-,5.5h,-,60,61,Calidad 7; energia 7; sigo con alguna molestia como si estuviese saliendo de una enfermedad
+2026-06-01,Biometrics,Sleep,biometrics,-,5.5,-,60,61,Calidad 7; energia 7; sigo con alguna molestia como si estuviese saliendo de una enfermedad
 2026-06-01,Strength,Gym Session,session,Low,Low upper,7,-,-,"Me senti bien; tome proteina, creatina y colageno"
-2026-06-02,Biometrics,Sleep,biometrics,-,8h 20m,-,52,63,Calidad 8/10; energia 8/10
-2026-06-02,Padel,Padel Session,session,Match,Match,-,-,-,Jugue al padel
+2026-06-02,Biometrics,Sleep,biometrics,-,8.33,-,52,63,Calidad 8/10; energia 8/10
+2026-06-02,Padel,Padel Session,session,Match,- | 1h 30m,-,-,-,Jugue al padel
 2026-06-02,Strength,Gym Session,session,High,Back Squat: 110kg 3x4; Calves: 160kg 3x6; Jumps: 3x3,-,-,-,Lower high + padel; tome todos los suplementos
-2026-06-02,Strength,Back Squat,kpi,High,110kg 3x4,-,-,-,
-2026-06-03,Biometrics,Sleep,biometrics,-,7h 30m,-,60,62,Calidad buena; energia 7/10
+2026-06-02,Strength,Back Squat,kpi,High,110kg - 3x4,-,-,-,
+2026-06-03,Biometrics,Sleep,biometrics,-,7.5,-,60,62,Calidad buena; energia 7/10
 2026-06-03,Recovery,Recovery Session,session,Recovery,No entrené,-,-,-,Tome todo
-2026-06-04,Biometrics,Sleep,biometrics,-,7h 20m,-,59,60,Calidad 7/10; energia 8/10; suplementos: todos
-2026-06-04,Padel,Padel Session,session,Match,Padel,-,-,-,Padel; suplementos: todos
-2026-06-05,Biometrics,Sleep,biometrics,-,5h 23m,-,49,63,Calidad 4/10; energia 5/10; suplementos: todos menos ashwagandha
-2026-06-05,Padel,Padel Session,session,Match,Padel,-,-,-,Padel; suplementos: todos menos ashwagandha
-2026-06-06,Biometrics,Sleep,biometrics,-,7h 30m,-,62,60,Calidad 7/10; energia 7/10; suplementos: todos menos ashwagandha
+2026-06-04,Biometrics,Sleep,biometrics,-,7.33,-,59,60,Calidad 7/10; energia 8/10; suplementos: todos
+2026-06-04,Padel,Padel Session,session,Match,- | 1h 30m,-,-,-,Padel; suplementos: todos
+2026-06-05,Biometrics,Sleep,biometrics,-,5.38,-,49,63,Calidad 4/10; energia 5/10; suplementos: todos menos ashwagandha
+2026-06-05,Padel,Padel Session,session,Match,- | 1h 30m,-,-,-,Padel; suplementos: todos menos ashwagandha
+2026-06-06,Biometrics,Sleep,biometrics,-,7.5,-,62,60,Calidad 7/10; energia 7/10; suplementos: todos menos ashwagandha
 2026-06-06,Strength,Gym Session,session,Low,Gym lower low,-,-,-,Gym lower low; suplementos: todos menos ashwagandha
-2026-06-07,Biometrics,Sleep,biometrics,-,6h 55m,-,49,65,Calidad 6/10; energia 7/10; suplementos: todos
+2026-06-07,Biometrics,Sleep,biometrics,-,6.92,-,49,65,Calidad 6/10; energia 7/10; suplementos: todos
 2026-06-07,Recovery,Recovery Session,session,Recovery,No entrené,-,-,-,Nada; suplementos: todos
-2026-06-08,Biometrics,Sleep,biometrics,-,6h 49m,-,51,63,Calidad 7/10; energia 8/10; suplementos: todos
-2026-06-08,Padel,Padel Session,session,Match,Padel,-,-,-,Padel; suplementos: todos
+2026-06-08,Biometrics,Sleep,biometrics,-,6.82,-,51,63,Calidad 7/10; energia 8/10; suplementos: todos
+2026-06-08,Padel,Padel Session,session,Match,- | 1h 30m,-,-,-,Padel; suplementos: todos
 2026-06-08,Strength,Gym Session,session,High,Back Squat: 110kg 3x4; Calves Press: 160kg 3x6,-,-,-,Gym lower high; resto accesorios; suplementos: todos
-2026-06-08,Strength,Back Squat,kpi,High,110kg 3x4,-,-,-,Lower high
-2026-06-08,Strength,Calves Press Machine,accessory,High,160kg 3x6,-,-,-,Gemelos en prensa; lower high
-2026-06-09,Biometrics,Sleep,biometrics,-,8h 42m,-,60,59,Calidad 9/10; energia 7/10; suplementos por ahora: todos; faltan los nocturnos
-2026-06-09,Padel,Padel Session,session,Match,Padel,-,-,-,Padel; suplementos diurnos ok; faltan los nocturnos
+2026-06-08,Strength,Back Squat,kpi,High,110kg - 3x4,-,-,-,Lower high
+2026-06-08,Strength,Calves Press Machine,accessory,High,160kg - 3x6,-,-,-,Gemelos en prensa; lower high
+2026-06-09,Biometrics,Sleep,biometrics,-,8.7,-,60,59,Calidad 9/10; energia 7/10; suplementos por ahora: todos; faltan los nocturnos
+2026-06-09,Padel,Padel Session,session,Match,- | 1h 30m,-,-,-,Padel; suplementos diurnos ok; faltan los nocturnos

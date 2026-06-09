@@ -87,5 +87,33 @@
       "type": "string",
       "required": true
     }
-  ]
+  ],
+  "volume_detail_rules": {
+    "Biometrics": {
+      "biometrics": {
+        "pattern": "^\\d+(?:\\.\\d+)?$",
+        "notes": "Represents sleep hours as a decimal number (e.g. 7.5, 8.0, 6.8)"
+      }
+    },
+    "Strength": {
+      "kpi": {
+        "pattern": "^\\d+(?:\\.\\d+)?kg\\s+(?:-\\s+\\d+x\\d+|x\\d+\\s+top set)(?:;\\s+\\d+(?:\\.\\d+)?kg\\s+(?:-\\s+\\d+x\\d+|x\\d+\\s+top set))*$",
+        "notes": "Format for principal lifts. Examples: '90kg - 3x4', '110kg x3 top set; 100kg - 2x4'"
+      },
+      "accessory": {
+        "pattern": "^\\d+(?:\\.\\d+)?kg\\s+-\\s+\\d+x\\d+(?:;\\s+\\d+(?:\\.\\d+)?kg\\s+-\\s+\\d+x\\d+)*$",
+        "notes": "Format for accessories. Example: '100kg - 3x10'"
+      },
+      "session": {
+        "pattern": "^.*$",
+        "notes": "Free-text summary of the gym session"
+      }
+    },
+    "Padel": {
+      "session": {
+        "pattern": "^(?:Win|Loss|-)\\s+\\|\\s+\\d+h(?:\\s+\\d+m)?$",
+        "notes": "Format for padel matches. Examples: 'Win | 1h 30m', 'Loss | 1h 30m', '- | 1h'"
+      }
+    }
+  }
 }

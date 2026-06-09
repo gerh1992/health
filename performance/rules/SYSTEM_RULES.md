@@ -31,6 +31,13 @@ One CSV row follows this schema:
 - Add `accessory` rows only when preserving that movement is actually useful.
 - Do not invent missing values. Use `-` when the user did not provide the number.
 
+## Volume_Detail formatting rules
+To enable automatic data parsing and analysis, the `Volume_Detail` column must follow strict formats based on the row's `Category` and `Entry_Type`:
+- **Biometrics (biometrics)**: Sleep duration must be reported as a decimal number representing hours (e.g., `7.5`, `8.0`, `6.8`). Do not use text like "7h 2m" or "7.5h".
+- **Strength (kpi)**: Principal lifts must follow the format `[Carga]kg - [Sets]x[Reps]` or top sets like `[Carga]kg x[Reps] top set; [Carga]kg - [Sets]x[Reps]` (e.g., `90kg - 3x4` or `110kg x3 top set; 100kg - 2x4`).
+- **Strength (accessory)**: Accessories must follow the format `[Carga]kg - [Sets]x[Reps]` (e.g., `100kg - 3x10`).
+- **Padel (session)**: Padel matches must follow the format `[Result] | [Duration]` where result is `Win`, `Loss`, or `-` (if practice/unknown) and duration is formatted as `Xh` or `Xh Ym` (e.g., `Win | 1h 30m`, `Loss | 1h 30m`, `- | 1h`).
+
 ## Late-night attribution rule
 When the user reports a completed day between `00:00` and `03:59` local time (GMT-3), assign that training/session to the **previous waking day** unless the user explicitly gives another date.
 
