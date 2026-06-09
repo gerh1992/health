@@ -1,0 +1,91 @@
+{
+  "file_type": "performance_log",
+  "canonical_csv_path": "/home/ubuntu/.hermes/data/health/performance/data/performance_log.csv",
+  "backup_dir": "/home/ubuntu/.hermes/data/health/performance/backups",
+  "timezone": "America/Argentina/Mendoza",
+  "late_night_attribution": {
+    "local_window_start": "00:00",
+    "local_window_end": "03:59",
+    "default_assign_to_previous_waking_day": true
+  },
+  "columns": [
+    {
+      "name": "Date",
+      "type": "date",
+      "format": "YYYY-MM-DD",
+      "required": true
+    },
+    {
+      "name": "Category",
+      "type": "enum",
+      "required": true,
+      "allowed": [
+        "Biometrics",
+        "Strength",
+        "Padel",
+        "Recovery",
+        "Social",
+        "Work"
+      ]
+    },
+    {
+      "name": "Activity",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "Entry_Type",
+      "type": "enum",
+      "required": true,
+      "allowed": [
+        "biometrics",
+        "session",
+        "kpi",
+        "accessory"
+      ]
+    },
+    {
+      "name": "Session_Tag",
+      "type": "enum",
+      "required": true,
+      "allowed": [
+        "High",
+        "Low",
+        "Match",
+        "Technical",
+        "Recovery",
+        "Social",
+        "Work",
+        "-"
+      ]
+    },
+    {
+      "name": "Volume_Detail",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "RPE",
+      "type": "string",
+      "required": true,
+      "notes": "Use '-' when unknown"
+    },
+    {
+      "name": "HRV_Morning",
+      "type": "string",
+      "required": true,
+      "notes": "Integer-as-string or '-'"
+    },
+    {
+      "name": "RHR_Night",
+      "type": "string",
+      "required": true,
+      "notes": "Integer-as-string or '-'"
+    },
+    {
+      "name": "Comments",
+      "type": "string",
+      "required": true
+    }
+  ]
+}
