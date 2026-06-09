@@ -19,5 +19,10 @@ Este subsistema guarda la fuente de verdad de:
 - filas `kpi` solo para lifts/tests que cambian decisiones,
 - filas `accessory` solo cuando preservarlas realmente agrega valor.
 
+## Convención de placeholders
+- `-` significa dato desconocido, no reportado o no disponible.
+- No significa cero.
+- En pádel, `- | 1h 30m` significa que la duración es conocida pero el resultado no fue reportado explícitamente o no fue una sesión claramente competitiva.
+
 ## Compatibilidad
 Existen symlinks de compatibilidad desde la ruta histórica `~/.hermes/data/performance/` hacia esta nueva estructura para no romper workflows viejos durante la transición.

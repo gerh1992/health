@@ -112,7 +112,7 @@
     "Padel": {
       "session": {
         "pattern": "^(?:Win|Loss|-)\\s+\\|\\s+\\d+h(?:\\s+\\d+m)?$",
-        "notes": "Format for padel matches. Examples: 'Win | 1h 30m', 'Loss | 1h 30m', '- | 1h'"
+        "notes": "Format for padel matches. Examples: 'Win | 1h 30m', 'Loss | 1h 30m', '- | 1h'. Here '-' means unknown result, not explicitly reported result, or a non-match practice session."
       }
     }
   }
