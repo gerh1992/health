@@ -8,18 +8,33 @@ Objetivos:
 - que el historial quede auditado con git,
 - que el sistema pueda crecer por subsistemas sin volverse una caja negra.
 
-## Estado actual
-Por ahora el repo contiene el subsistema de performance:
-- sueño,
-- entrenamiento,
-- suplementos,
-- reglas operativas del log.
+## Objetivo funcional del repo
+Que una IA o una persona nueva, con **cero contexto previo**, pueda entrar al repo y entender:
+- qué es estable,
+- qué cambia día a día,
+- cuáles son las fuentes de verdad,
+- qué reglas de interpretación existen,
+- y qué información importante todavía falta documentar.
 
-Más adelante se pueden agregar otros subsistemas de salud dentro de este mismo repo.
+## Estado actual
+Hoy el repo tiene dos capas principales:
+- `context/` → contexto estable + reglas de lectura + mapa de fuentes
+- `performance/` → log operativo de sueño, entrenamiento, recovery y suplementos
+
+Y deja preparado:
+- `medical/` → evidencia clínica / estudios / lesiones / medicación / reports
 
 ## Estructura actual
 ```text
 health/
+  README.md
+  .gitignore
+  context/
+    README.md
+    profile.yaml
+    current-state.md
+    decision-rules.md
+    data-sources.yaml
   performance/
     README.md
     data/
@@ -31,7 +46,19 @@ health/
     ops/
       backup_performance_log.sh
     backups/           # ignorado por git
+  medical/
+    README.md
 ```
+
+## Orden de lectura recomendado para una IA o persona nueva
+1. `context/profile.yaml`
+2. `context/current-state.md`
+3. `context/decision-rules.md`
+4. `context/data-sources.yaml`
+5. `performance/README.md`
+6. `performance/rules/SYSTEM_RULES.md`
+7. `performance/data/performance_log.csv`
+8. `medical/README.md`
 
 ## Workflow acordado
 1. `git pull --rebase`
@@ -54,6 +81,12 @@ No hace falta una convención rígida, pero sí contexto suficiente para entende
 - Cambios automáticos hechos por Hermes: `Hermes Agent <hermes@local>`
 - Cambios manuales del usuario: tu identidad/config de git
 
-## Nota sobre contexto general de salud
-Todavía no se definió el diseño final para contexto biométrico/antecedentes/estudios.
-Cuando se defina, conviene agregarlo de manera explícita y con estructura, no mezclarlo arbitrariamente con el CSV operativo.
+## Principio de modelado
+No mezclar en un mismo archivo:
+- hechos estables,
+- eventos diarios,
+- evidencia médica,
+- reglas del sistema,
+- e interpretaciones.
+
+Separar esas capas hace que el sistema sea legible, mantenible y reusable por otras IAs.

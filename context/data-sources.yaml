@@ -1,0 +1,43 @@
+version: 1
+last_updated: 2026-06-09
+sources:
+  - name: health_repo_root
+    path: /home/ubuntu/.hermes/data/health
+    role: canonical repository root
+  - name: user_profile
+    path: context/profile.yaml
+    role: stable user facts relevant for health/performance decisions
+  - name: current_state
+    path: context/current-state.md
+    role: active goals, priorities, and known limitations
+  - name: decision_rules
+    path: context/decision-rules.md
+    role: interpretation guardrails for humans and AIs
+  - name: performance_log
+    path: performance/data/performance_log.csv
+    role: canonical daily operational log for sleep, training, supplements, and recovery
+  - name: performance_schema
+    path: performance/schema/SCHEMA.json
+    role: structural definition of the performance log
+  - name: performance_rules
+    path: performance/rules/SYSTEM_RULES.md
+    role: operational rules for editing and maintaining the performance subsystem
+  - name: performance_backups
+    path: performance/backups/
+    role: local pre-edit safety snapshots; not versioned in git
+    git_tracked: false
+  - name: medical_subsystem
+    path: medical/
+    role: reserved area for labs, diagnoses, injuries, medication, reports, and other health evidence
+    status: scaffold_only
+read_order_for_new_agent:
+  - context/profile.yaml
+  - context/current-state.md
+  - context/decision-rules.md
+  - performance/README.md
+  - performance/rules/SYSTEM_RULES.md
+  - performance/data/performance_log.csv
+  - medical/README.md
+notes:
+  - If a file is not listed here, it should not be assumed to be canonical.
+  - Backups are recovery artifacts, not the primary analytical source.

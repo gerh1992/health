@@ -1,0 +1,43 @@
+version: 1
+last_updated: 2026-06-09
+identity:
+  name: German Hidalgo
+  preferred_name: German
+  sex: male
+  age_years: 33
+  birth_year_estimate: 1992
+  location:
+    city: Mendoza
+    country: Argentina
+    timezone: America/Argentina/Mendoza
+  occupation: Remote programmer
+anthropometrics:
+  height_m: 1.69
+  weight_kg: 67
+performance_orientation:
+  primary_goal: athletic performance
+  priority_order:
+    - speed
+    - agility
+    - acceleration
+    - strength
+  non_priority:
+    - aesthetics
+communication:
+  preferred_language: es
+  tone: direct, exigent, low-fluff
+  coaching_style:
+    - mechanistic explanations
+    - conceptual frameworks
+    - self-testing over overfitting to noisy logs
+system_preferences:
+  accountability_style: exigent
+  preferred_interface: Hermes web dashboard when reliable; Telegram topics for recurring accountability
+  repository_goal: make important health context inspectable and auditable by git
+supplements:
+  ashwagandha_cycle:
+    pattern: 5_on_2_off
+    status: active preference
+notes:
+  - This file is for relatively stable facts, not daily logs.
+  - If a stable fact changes, update this file and record the reason in git history.
