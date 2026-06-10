@@ -65,6 +65,7 @@ Logs daily intake of supplements. Exactly one row per date.
 - `Date`: String, format `YYYY-MM-DD` (Primary Key).
 - `Protein`: Enum: `True`, `False`, `-`.
 - `Creatine`: Enum: `True`, `False`, `-`.
+- `Collagen`: Enum: `True`, `False`, `-`.
 - `Magnesium`: Enum: `True`, `False`, `-`.
 - `Retinol`: Enum: `True`, `False`, `-`.
 - `Ashwagandha`: Enum: `True`, `False`, `-`.

@@ -255,31 +255,61 @@
         {
           "name": "Protein",
           "type": "enum",
-          "allowed": ["True", "False", "-"],
+          "allowed": [
+            "True",
+            "False",
+            "-"
+          ],
           "required": true
         },
         {
           "name": "Creatine",
           "type": "enum",
-          "allowed": ["True", "False", "-"],
+          "allowed": [
+            "True",
+            "False",
+            "-"
+          ],
+          "required": true
+        },
+        {
+          "name": "Collagen",
+          "type": "enum",
+          "allowed": [
+            "True",
+            "False",
+            "-"
+          ],
           "required": true
         },
         {
           "name": "Magnesium",
           "type": "enum",
-          "allowed": ["True", "False", "-"],
+          "allowed": [
+            "True",
+            "False",
+            "-"
+          ],
           "required": true
         },
         {
           "name": "Retinol",
           "type": "enum",
-          "allowed": ["True", "False", "-"],
+          "allowed": [
+            "True",
+            "False",
+            "-"
+          ],
           "required": true
         },
         {
           "name": "Ashwagandha",
           "type": "enum",
-          "allowed": ["True", "False", "-"],
+          "allowed": [
+            "True",
+            "False",
+            "-"
+          ],
           "required": true
         }
       ]
