@@ -1,0 +1,34 @@
+Session_Id,Date,Category,Activity,Duration_Minutes,RPE,Session_Tag,Comments
+2026-05-04-strength,2026-05-04,Strength,Gym Session,60,8,High,Tercer entrenamiento despues de 2 meses.
+2026-05-05-padel,2026-05-05,Padel,Padel Session,90,9,Match,"Jugue muy mal. Erre muchisimo y al mismo tiempo no arriesgue tanto, ultimamente no vengo mejorando mucho y no se como hacer."
+2026-05-06-recovery,2026-05-06,Recovery,Recovery Session,60,5,Recovery,Circuito de movilidad y estiramientos en el gym.
+2026-05-07-padel,2026-05-07,Padel,Padel Session,90,8,Match,"Partido de padel perdido ayer, jugue pesimo de nuevo!."
+2026-05-08-strength,2026-05-08,Strength,Gym Session,60,8,Low,Lo hice para ir agregando capacidad de trabajo.
+2026-05-11-strength,2026-05-11,Strength,Gym Session,60,8,High,Me senti bien y estoy cerca de volver a mis numeros viejos.
+2026-05-12-padel,2026-05-12,Padel,Padel Session,90,7,Match,Volvi a jugar bien despues de mucho tiempo.
+2026-05-13-recovery,2026-05-13,Recovery,Recovery Session,60,4,Recovery,
+2026-05-14-strength,2026-05-14,Strength,Gym Session,60,7,Low,
+2026-05-16-strength,2026-05-16,Strength,Gym Session,60,8,High,gym lower
+2026-05-17-recovery,2026-05-17,Recovery,Recovery Session,60,-,Recovery,caminata
+2026-05-18-strength,2026-05-18,Strength,Gym Session,60,8,High,gym lower
+2026-05-19-padel,2026-05-19,Padel,Padel Session,90,7,Match,
+2026-05-20-recovery,2026-05-20,Recovery,Recovery Session,60,-,Recovery,caminata
+2026-05-21-padel,2026-05-21,Padel,Padel Session,90,-,Match,gané
+2026-05-22-padel,2026-05-22,Padel,Padel Session,90,-,Match,gané
+2026-05-23-recovery,2026-05-23,Recovery,Recovery Session,60,-,Recovery,Resaca; muy tranquilo; tome los suplementos
+2026-05-25-recovery,2026-05-25,Recovery,Recovery Session,60,-,Recovery,Tome todos los suplementos y el retinol
+2026-05-26-padel,2026-05-26,Padel,Padel Session,90,-,Match,Tome todos los suplementos (incluso los nocturnos)
+2026-05-27-strength,2026-05-27,Strength,Gym Session,60,-,High,Piernas high; me senti bastante bien
+2026-05-28-padel,2026-05-28,Padel,Padel Session,90,-,Match,Tome todos los suplementos; intensidad normal; no senti mucha carga extra
+2026-05-31-recovery,2026-05-31,Recovery,Recovery Session,60,-,Recovery,Ayer tome mucho; me senti muy decaido; tome todos los suplementos y retinol
+2026-06-01-strength,2026-06-01,Strength,Gym Session,60,7,Low,"Me senti bien; tome proteina, creatina y colageno"
+2026-06-02-padel,2026-06-02,Padel,Padel Session,90,-,Match,Jugue al padel
+2026-06-02-strength,2026-06-02,Strength,Gym Session,60,-,High,Lower high + padel; tome todos los suplementos
+2026-06-03-recovery,2026-06-03,Recovery,Recovery Session,60,-,Recovery,Tome todo
+2026-06-04-padel,2026-06-04,Padel,Padel Session,90,-,Match,Padel; suplementos: todos
+2026-06-05-padel,2026-06-05,Padel,Padel Session,90,-,Match,Padel; suplementos: todos menos ashwagandha
+2026-06-06-strength,2026-06-06,Strength,Gym Session,60,-,Low,Gym lower low; suplementos: todos menos ashwagandha
+2026-06-07-recovery,2026-06-07,Recovery,Recovery Session,60,-,Recovery,Nada; suplementos: todos
+2026-06-08-padel,2026-06-08,Padel,Padel Session,90,-,Match,Padel; suplementos: todos
+2026-06-08-strength,2026-06-08,Strength,Gym Session,60,-,High,Gym lower high; resto accesorios; suplementos: todos
+2026-06-09-padel,2026-06-09,Padel,Padel Session,90,-,Match,Padel; suplementos diurnos ok; faltan los nocturnos

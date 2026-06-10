@@ -1,62 +1,92 @@
-# Performance Log System Rules
+# Performance Log System Rules (Multi-CSV Architecture)
 
 ## Canonical paths
-- Source of truth CSV: `/home/ubuntu/.hermes/data/health/performance/data/performance_log.csv`
-- Schema definition: `/home/ubuntu/.hermes/data/health/performance/schema/SCHEMA.json`
-- Backup directory: `/home/ubuntu/.hermes/data/health/performance/backups/`
-- Backup script: `/home/ubuntu/.hermes/data/health/performance/ops/backup_performance_log.sh`
-- Repo root: `/home/ubuntu/.hermes/data/health`
+All files are located relative to the repository root `/home/ubuntu/.hermes/data/health/` (or locally `/Users/ghidalgo/projects/ai-systems/health/`):
+- Schema definition: `performance/schema/SCHEMA.json`
+- Database files:
+  - `performance/data/biometrics.csv`
+  - `performance/data/sessions.csv`
+  - `performance/data/fitness_metrics.csv`
+  - `performance/data/match_details.csv`
+  - `performance/data/supplements.csv`
+- Validation script: `performance/ops/validate_log.py`
 
-## Non-canonical paths
-Do **not** treat `~/.hermes/cache/documents/` as source of truth for health/performance data.
-That area may contain uploads, temporary artifacts, or files that later disappear.
+---
 
-## Row model
-One CSV row follows this schema:
-- `Date`: string, format `YYYY-MM-DD`
-- `Category`: enum string: `Biometrics`, `Strength`, `Padel`, `Recovery`, `Social`, `Work`
-- `Activity`: string
-- `Entry_Type`: enum string: `biometrics`, `session`, `kpi`, `accessory`
-- `Session_Tag`: enum string: `High`, `Low`, `Match`, `Technical`, `Recovery`, `Social`, `Work`, `-`
-- `Volume_Detail`: string
-- `RPE`: stringified number like `7`, `8`, `8/10`, or `-` when unknown
-- `HRV_Morning`: integer-as-string or `-`
-- `RHR_Night`: integer-as-string or `-`
-- `Comments`: free-text string
+## Data Models and Schema Rules
 
-## Logging rules
-- Add exactly one `biometrics` row when the day has sleep/recovery metrics.
-- Add one `session` row per meaningful event category for that day.
-- Add `kpi` rows only for lifts/tests that can change decisions.
-- Add `accessory` rows only when preserving that movement is actually useful.
-- Do not invent missing values. Use `-` when the user did not provide the number.
+### 1. `biometrics.csv` (Daily Sleep & Recovery Log)
+Logs recovery metrics. Exactly one row per date if sleep or recovery data is reported.
+- `Date`: String, format `YYYY-MM-DD` (Primary Key).
+- `Sleep_Hours`: Decimal representing duration (e.g. `7.25`, `8.5`, `6.0`).
+- `HRV_Morning`: Integer representing morning HRV or `-`.
+- `RHR_Night`: Integer representing night RHR or `-`.
+- `Sleep_Quality`: Integer (1-10) representing subjective quality or `-`.
+- `Energy_Level`: Integer (1-10) representing morning energy or `-`.
+- `Comments`: Free-text string.
 
-## Placeholder semantics
+### 2. `sessions.csv` (Main Activity Log)
+Logs all main daily events (trainings, padel matches, work, recovery walk, etc.).
+- `Session_Id`: Unique string identifier (e.g., `YYYY-MM-DD-strength`, `YYYY-MM-DD-padel`).
+- `Date`: String, format `YYYY-MM-DD`.
+- `Category`: Enum: `Strength`, `Cardio`, `Padel`, `Soccer`, `Recovery`, `Social`, `Work`.
+- `Activity`: Name of the session (e.g. `Gym Session`, `Partido Padel`, `Fútbol 5`).
+- `Duration_Minutes`: Integer representing session duration.
+- `RPE`: Integer (1-10) or `-`.
+- `Session_Tag`: Enum: `High`, `Low`, `Match`, `Technical`, `Recovery`, `Social`, `Work`, `-`.
+- `Comments`: Free-text string.
+
+### 3. `fitness_metrics.csv` (Heterogeneous Performance Metrics)
+Stores granular performance values (lifts, jumps, speed/sprints). Every row links to a session in `sessions.csv` via `Session_Id`.
+- `Metric_Id`: Unique string identifier (e.g., `m-YYYY-MM-DD-N`).
+- `Session_Id`: Foreign Key linking to `sessions.csv`.
+- `Metric_Name`: Name of the metric (e.g. `Back Squat`, `Vertical Jump`, `Sprint 30m`).
+- `Metric_Type`: Enum: `Strength`, `Jump`, `Speed`, `Endurance`.
+- `Performance_Value`: Decimal value (e.g. `110.0`, `45.0`, `4.15` or `-` if unknown).
+- `Performance_Unit`: Enum: `kg`, `cm`, `sec`, `m`.
+- `Volume_Sets`: Integer or `-`.
+- `Volume_Reps`: Integer or `-`.
+- `Is_KPI`: Enum: `True` or `False`.
+- `RPE`: Integer (1-10) or `-`.
+
+### 4. `match_details.csv` (Team Sports & Competitive Matches)
+Stores details for competitive team sports. Links to `sessions.csv` via `Session_Id`.
+- `Session_Id`: Primary Key & Foreign Key linking to `sessions.csv`.
+- `Sport`: Enum: `Padel`, `Soccer`, `Tennis`.
+- `Match_Result`: Enum: `Win`, `Loss`, `-` (for practices or recreational matches).
+- `Match_Type`: Enum: `Friendly`, `Tournament`, `-`.
+- `Tournament_Category`: Level of the tournament (e.g. `7ma`, `6ta`, `1ra` or `-` if friendly/recreational).
+- `Score`: String score (e.g. `6-4 6-2`, `5-3` or `-`).
+- `Partner`: Name of teammate(s) or `-`.
+- `Opponents`: Name of opponent(s) or `-`.
+
+### 5. `supplements.csv` (Daily Supplement Adherence Log)
+Logs daily intake of supplements. Exactly one row per date.
+- `Date`: String, format `YYYY-MM-DD` (Primary Key).
+- `Protein`: Enum: `True`, `False`, `-`.
+- `Creatine`: Enum: `True`, `False`, `-`.
+- `Magnesium`: Enum: `True`, `False`, `-`.
+- `Retinol`: Enum: `True`, `False`, `-`.
+- `Ashwagandha`: Enum: `True`, `False`, `-`.
+
+---
+
+## Placeholder Semantics
 - `-` always means **unknown / not reported by the user / intentionally left blank because the data point is unavailable**.
 - `-` does **not** mean zero.
 - `-` does **not** mean a negative result.
-- In `Padel` `session` rows, `- | 1h 30m` means the duration is known but the result was either not explicitly reported or the session was not clearly logged as a competitive match.
-- If a future tool or analyst needs stricter semantics than `-`, that distinction should be modeled explicitly in a separate field or a schema revision, not guessed from context.
+- In `match_details.csv`, `Match_Result: -` means the session was non-competitive, a practice, or the result was not explicitly reported.
 
-## Volume_Detail formatting rules
-To enable automatic data parsing and analysis, the `Volume_Detail` column must follow strict formats based on the row's `Category` and `Entry_Type`:
-- **Biometrics (biometrics)**: Sleep duration must be reported as a decimal number representing hours (e.g., `7.5`, `8.0`, `6.8`). Do not use text like "7h 2m" or "7.5h".
-- **Strength (kpi)**: Principal lifts must follow the format `[Carga]kg - [Sets]x[Reps]` or top sets like `[Carga]kg x[Reps] top set; [Carga]kg - [Sets]x[Reps]` (e.g., `90kg - 3x4` or `110kg x3 top set; 100kg - 2x4`).
-- **Strength (accessory)**: Accessories must follow the format `[Carga]kg - [Sets]x[Reps]` (e.g., `100kg - 3x10`).
-- **Padel (session)**: Padel matches must follow the format `[Result] | [Duration]` where result is `Win`, `Loss`, or `-` (if unknown / not explicitly reported / non-match practice) and duration is formatted as `Xh` or `Xh Ym` (e.g., `Win | 1h 30m`, `Loss | 1h 30m`, `- | 1h`).
+---
 
 ## Late-night attribution rule
 When the user reports a completed day between `00:00` and `03:59` local time (GMT-3), assign that training/session to the **previous waking day** unless the user explicitly gives another date.
 
-## Backup rules
-- Before every structural edit or append, create a timestamped backup in `backups/`.
-- Backup filename format: `performance_log.backup_YYYYMMDDTHHMMSSZ.csv`
-- Keep backups append-only on disk for now, but ignore them in git.
-- After each write, verify by reading the CSV back from disk.
+---
 
 ## Git workflow
 - Before any modification, run `git pull --rebase` from the repo root.
-- After any modification, verify the affected files, then commit with a contextual message.
+- After any modification, verify all affected files, then commit with a contextual message.
 - After committing, push to the remote.
 - Hermes should use repo-local git author `Hermes Agent <hermes@local>` unless the user asks otherwise.
 

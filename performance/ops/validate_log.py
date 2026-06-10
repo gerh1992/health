@@ -10,11 +10,11 @@ def main():
     # Resolve relative paths to keep the script portable
     script_dir = os.path.dirname(os.path.abspath(__file__))
     schema_path = os.path.normpath(os.path.join(script_dir, "..", "schema", "SCHEMA.json"))
-    csv_path = os.path.normpath(os.path.join(script_dir, "..", "data", "performance_log.csv"))
+    data_dir = os.path.normpath(os.path.join(script_dir, "..", "data"))
 
     print(f"🔍 Starting performance log validation...")
     print(f"📂 Schema file: {schema_path}")
-    print(f"📂 Data file: {csv_path}")
+    print(f"📂 Data directory: {data_dir}")
     print("-" * 60)
 
     # 1. Load the schema
@@ -29,172 +29,170 @@ def main():
         print(f"❌ ERROR: Could not parse SCHEMA.json: {e}")
         sys.exit(1)
 
-    # 2. Load and parse the CSV
-    if not os.path.exists(csv_path):
-        print(f"❌ ERROR: CSV file not found at: {csv_path}")
-        sys.exit(1)
-
-    # Define schema rules for fast lookup
-    columns_spec = schema.get("columns", [])
-    expected_headers = [col["name"] for col in columns_spec]
-    volume_rules = schema.get("volume_detail_rules", {})
-
+    files_schema = schema.get("files", {})
     errors = []
-    rows_checked = 0
+    session_ids = set()
+    referenced_session_ids_in_metrics = set()
+    referenced_session_ids_in_matches = set()
 
-    with open(csv_path, "r", encoding="utf-8") as f:
-        # Detect CSV dialect to ensure correct reading
-        reader = csv.DictReader(f)
-        headers = reader.fieldnames
+    # 2. Validate columns, formats, and collect Session_Ids
+    for file_name, file_spec in files_schema.items():
+        csv_path = os.path.join(data_dir, file_name)
+        print(f"📄 Validating {file_name}...")
 
-        if not headers:
-            print("❌ ERROR: The CSV file is empty or has no headers.")
-            sys.exit(1)
-
-        # Validate CSV headers
-        if headers != expected_headers:
+        if not os.path.exists(csv_path):
             errors.append({
-                "line": 1,
-                "date": "N/A",
-                "col": "Headers",
-                "msg": f"CSV headers do not match schema.\nExpected: {expected_headers}\nFound: {headers}"
+                "file": file_name,
+                "line": "N/A",
+                "col": "Existence",
+                "msg": f"File {file_name} is missing from data directory."
             })
-            # If headers are wrong, we cannot reliably continue validation
-            print_summary_and_exit(errors, rows_checked)
+            continue
 
-        # Validate row by row (lines in DictReader start at 2 due to headers)
-        for line_num, row in enumerate(reader, start=2):
-            rows_checked += 1
-            date_val = row.get("Date", "Unknown")
+        columns_spec = file_spec.get("columns", [])
+        expected_headers = [col["name"] for col in columns_spec]
 
-            # A. Validate Date
-            if "Date" in row:
-                if not re.match(r"^\d{4}-\d{2}-\d{2}$", row["Date"]):
-                    errors.append({
-                        "line": line_num,
-                        "date": date_val,
-                        "col": "Date",
-                        "msg": f"Invalid date format '{row['Date']}'. Must be YYYY-MM-DD"
-                    })
-                else:
-                    try:
-                        datetime.strptime(row["Date"], "%Y-%m-%d")
-                    except ValueError:
+        with open(csv_path, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            headers = reader.fieldnames
+
+            if not headers:
+                errors.append({
+                    "file": file_name,
+                    "line": 1,
+                    "col": "Headers",
+                    "msg": "File is empty or missing headers."
+                })
+                continue
+
+            if headers != expected_headers:
+                errors.append({
+                    "file": file_name,
+                    "line": 1,
+                    "col": "Headers",
+                    "msg": f"Headers do not match schema. Expected: {expected_headers}, Found: {headers}"
+                })
+                continue
+
+            # Check rows
+            for line_num, row in enumerate(reader, start=2):
+                # Validate Date column if present
+                if "Date" in row:
+                    date_val = row["Date"]
+                    if not re.match(r"^\d{4}-\d{2}-\d{2}$", date_val):
                         errors.append({
+                            "file": file_name,
                             "line": line_num,
-                            "date": date_val,
                             "col": "Date",
-                            "msg": f"Non-existent or invalid date '{row['Date']}'"
+                            "msg": f"Invalid date format '{date_val}'. Must be YYYY-MM-DD"
                         })
-
-            # B. Validate Category (Enum)
-            category_spec = next((c for c in columns_spec if c["name"] == "Category"), None)
-            if category_spec and "Category" in row:
-                allowed_categories = category_spec.get("allowed", [])
-                if row["Category"] not in allowed_categories:
-                    errors.append({
-                        "line": line_num,
-                        "date": date_val,
-                        "col": "Category",
-                        "msg": f"Category '{row['Category']}' not allowed. Allowed values: {allowed_categories}"
-                    })
-
-            # C. Validate Entry_Type (Enum)
-            entry_type_spec = next((c for c in columns_spec if c["name"] == "Entry_Type"), None)
-            if entry_type_spec and "Entry_Type" in row:
-                allowed_entry_types = entry_type_spec.get("allowed", [])
-                if row["Entry_Type"] not in allowed_entry_types:
-                    errors.append({
-                        "line": line_num,
-                        "date": date_val,
-                        "col": "Entry_Type",
-                        "msg": f"Entry type '{row['Entry_Type']}' not allowed. Allowed values: {allowed_entry_types}"
-                    })
-
-            # D. Validate Session_Tag (Enum)
-            session_tag_spec = next((c for c in columns_spec if c["name"] == "Session_Tag"), None)
-            if session_tag_spec and "Session_Tag" in row:
-                allowed_tags = session_tag_spec.get("allowed", [])
-                if row["Session_Tag"] not in allowed_tags:
-                    errors.append({
-                        "line": line_num,
-                        "date": date_val,
-                        "col": "Session_Tag",
-                        "msg": f"Session tag '{row['Session_Tag']}' not allowed. Allowed values: {allowed_tags}"
-                    })
-
-            # E. Validate RPE (Num/String or '-')
-            if "RPE" in row:
-                rpe_val = row["RPE"]
-                if rpe_val != "-":
-                    # Accept simple number or fraction (e.g. 8, 8/10)
-                    if not re.match(r"^\d+(?:\/\d+)?$", rpe_val):
-                        errors.append({
-                            "line": line_num,
-                            "date": date_val,
-                            "col": "RPE",
-                            "msg": f"Invalid RPE '{rpe_val}'. Must be an integer, a fraction (e.g. 8/10), or '-'"
-                        })
-
-            # F. Validate HRV_Morning
-            if "HRV_Morning" in row:
-                hrv_val = row["HRV_Morning"]
-                if hrv_val != "-" and not hrv_val.isdigit():
-                    errors.append({
-                        "line": line_num,
-                        "date": date_val,
-                        "col": "HRV_Morning",
-                        "msg": f"Invalid HRV '{hrv_val}'. Must be an integer or '-'"
-                    })
-
-            # G. Validate RHR_Night
-            if "RHR_Night" in row:
-                rhr_val = row["RHR_Night"]
-                if rhr_val != "-" and not rhr_val.isdigit():
-                    errors.append({
-                        "line": line_num,
-                        "date": date_val,
-                        "col": "RHR_Night",
-                        "msg": f"Invalid RHR '{rhr_val}'. Must be an integer or '-'"
-                    })
-
-            # H. Validate Volume_Detail based on Category + Entry_Type rules
-            if "Volume_Detail" in row and "Category" in row and "Entry_Type" in row:
-                cat = row["Category"]
-                etype = row["Entry_Type"]
-                volume_val = row["Volume_Detail"]
-
-                cat_rules = volume_rules.get(cat, {})
-                rule = cat_rules.get(etype)
-
-                if rule:
-                    pattern = rule.get("pattern")
-                    if pattern:
-                        if not re.match(pattern, volume_val):
+                    else:
+                        try:
+                            datetime.strptime(date_val, "%Y-%m-%d")
+                        except ValueError:
                             errors.append({
+                                "file": file_name,
                                 "line": line_num,
-                                "date": date_val,
-                                "col": "Volume_Detail",
-                                "msg": f"Inconsistent format in Volume_Detail for {cat} ({etype}): '{volume_val}'.\n   Expected detail: {rule.get('notes')}"
+                                "col": "Date",
+                                "msg": f"Non-existent or invalid date '{date_val}'"
                             })
 
-    print_summary_and_exit(errors, rows_checked)
+                # Validate specific columns
+                for col in columns_spec:
+                    col_name = col["name"]
+                    col_type = col["type"]
+                    required = col.get("required", False)
+                    allowed = col.get("allowed", [])
 
-def print_summary_and_exit(errors, rows_checked):
+                    val = row.get(col_name)
+                    if required and (val is None or val == ""):
+                        errors.append({
+                            "file": file_name,
+                            "line": line_num,
+                            "col": col_name,
+                            "msg": "Field is required but missing or empty."
+                        })
+                        continue
+
+                    # Validate enums
+                    if col_type == "enum" and val not in allowed:
+                        errors.append({
+                            "file": file_name,
+                            "line": line_num,
+                            "col": col_name,
+                            "msg": f"Value '{val}' not allowed. Allowed values: {allowed}"
+                        })
+
+                    # Validate integers (or '-')
+                    if col_type == "integer" and val != "-":
+                        try:
+                            int(val)
+                        except ValueError:
+                            errors.append({
+                                "file": file_name,
+                                "line": line_num,
+                                "col": col_name,
+                                "msg": f"Value '{val}' must be an integer or '-'"
+                            })
+
+                    # Validate decimals (or '-')
+                    if col_type == "decimal" and val != "-":
+                        try:
+                            float(val)
+                        except ValueError:
+                            errors.append({
+                                "file": file_name,
+                                "line": line_num,
+                                "col": col_name,
+                                "msg": f"Value '{val}' must be a decimal/float or '-'"
+                            })
+
+                # Collect and track relationships
+                if file_name == "sessions.csv":
+                    session_ids.add(row.get("Session_Id"))
+                elif file_name == "fitness_metrics.csv":
+                    referenced_session_ids_in_metrics.add(row.get("Session_Id"))
+                elif file_name == "match_details.csv":
+                    referenced_session_ids_in_matches.add(row.get("Session_Id"))
+
+    # 3. Validate Referential Integrity (Foreign Keys)
+    print("🔗 Validating relational integrity...")
+    
+    # Check that every session referenced in metrics exists in sessions.csv
+    for sid in referenced_session_ids_in_metrics:
+        if sid not in session_ids:
+            errors.append({
+                "file": "fitness_metrics.csv",
+                "line": "N/A",
+                "col": "Session_Id",
+                "msg": f"Foreign Key Error: Session_Id '{sid}' referenced in fitness_metrics does not exist in sessions.csv"
+            })
+
+    # Check that every session referenced in match details exists in sessions.csv
+    for sid in referenced_session_ids_in_matches:
+        if sid not in session_ids:
+            errors.append({
+                "file": "match_details.csv",
+                "line": "N/A",
+                "col": "Session_Id",
+                "msg": f"Foreign Key Error: Session_Id '{sid}' referenced in match_details does not exist in sessions.csv"
+            })
+
+    # 4. Print Summary and Exit
+    print("-" * 60)
     print(f"📊 Validation Summary:")
-    print(f"   - Processed rows: {rows_checked}")
-    print(f"   - Errors found: {len(errors)}")
+    print(f"   - Total errors found: {len(errors)}")
     print("-" * 60)
 
     if errors:
         print("❌ DETAILED ERRORS FOUND:\n")
         for err in errors:
-            print(f"📍 Line {err['line']} | Date: {err['date']} | Column: {err['col']}")
+            print(f"📍 File: {err['file']} | Line {err['line']} | Column: {err['col']}")
             print(f"   ⚠️ {err['msg']}")
             print("-" * 40)
         sys.exit(1)
     else:
-        print("✅ The CSV file is 100% valid and consistent with the schema!")
+        print("✅ All CSV files are 100% valid and consistent with the new Multi-CSV schema!")
         sys.exit(0)
 
 if __name__ == "__main__":

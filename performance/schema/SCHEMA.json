@@ -1,119 +1,288 @@
 {
-  "file_type": "performance_log",
-  "canonical_csv_path": "/home/ubuntu/.hermes/data/health/performance/data/performance_log.csv",
-  "backup_dir": "/home/ubuntu/.hermes/data/health/performance/backups",
+  "file_type": "multi_csv_performance_log",
   "timezone": "America/Argentina/Mendoza",
-  "late_night_attribution": {
-    "local_window_start": "00:00",
-    "local_window_end": "03:59",
-    "default_assign_to_previous_waking_day": true
-  },
-  "columns": [
-    {
-      "name": "Date",
-      "type": "date",
-      "format": "YYYY-MM-DD",
-      "required": true
-    },
-    {
-      "name": "Category",
-      "type": "enum",
-      "required": true,
-      "allowed": [
-        "Biometrics",
-        "Strength",
-        "Padel",
-        "Recovery",
-        "Social",
-        "Work"
+  "files": {
+    "biometrics.csv": {
+      "columns": [
+        {
+          "name": "Date",
+          "type": "date",
+          "format": "YYYY-MM-DD",
+          "required": true
+        },
+        {
+          "name": "Sleep_Hours",
+          "type": "decimal",
+          "required": true
+        },
+        {
+          "name": "HRV_Morning",
+          "type": "string",
+          "notes": "Integer-as-string or '-'",
+          "required": true
+        },
+        {
+          "name": "RHR_Night",
+          "type": "string",
+          "notes": "Integer-as-string or '-'",
+          "required": true
+        },
+        {
+          "name": "Sleep_Quality",
+          "type": "string",
+          "notes": "Integer-as-string or '-'",
+          "required": true
+        },
+        {
+          "name": "Energy_Level",
+          "type": "string",
+          "notes": "Integer-as-string or '-'",
+          "required": true
+        },
+        {
+          "name": "Comments",
+          "type": "string",
+          "required": false
+        }
       ]
     },
-    {
-      "name": "Activity",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "Entry_Type",
-      "type": "enum",
-      "required": true,
-      "allowed": [
-        "biometrics",
-        "session",
-        "kpi",
-        "accessory"
+    "sessions.csv": {
+      "columns": [
+        {
+          "name": "Session_Id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Date",
+          "type": "date",
+          "format": "YYYY-MM-DD",
+          "required": true
+        },
+        {
+          "name": "Category",
+          "type": "enum",
+          "allowed": [
+            "Strength",
+            "Cardio",
+            "Padel",
+            "Soccer",
+            "Recovery",
+            "Social",
+            "Work"
+          ],
+          "required": true
+        },
+        {
+          "name": "Activity",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Duration_Minutes",
+          "type": "integer",
+          "required": true
+        },
+        {
+          "name": "RPE",
+          "type": "string",
+          "notes": "Integer-as-string or '-'",
+          "required": true
+        },
+        {
+          "name": "Session_Tag",
+          "type": "enum",
+          "allowed": [
+            "High",
+            "Low",
+            "Match",
+            "Technical",
+            "Recovery",
+            "Social",
+            "Work",
+            "-"
+          ],
+          "required": true
+        },
+        {
+          "name": "Comments",
+          "type": "string",
+          "required": false
+        }
       ]
     },
-    {
-      "name": "Session_Tag",
-      "type": "enum",
-      "required": true,
-      "allowed": [
-        "High",
-        "Low",
-        "Match",
-        "Technical",
-        "Recovery",
-        "Social",
-        "Work",
-        "-"
+    "fitness_metrics.csv": {
+      "columns": [
+        {
+          "name": "Metric_Id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Session_Id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Metric_Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Metric_Type",
+          "type": "enum",
+          "allowed": [
+            "Strength",
+            "Jump",
+            "Speed",
+            "Endurance"
+          ],
+          "required": true
+        },
+        {
+          "name": "Performance_Value",
+          "type": "string",
+          "notes": "Decimal-as-string or '-'",
+          "required": true
+        },
+        {
+          "name": "Performance_Unit",
+          "type": "enum",
+          "allowed": [
+            "kg",
+            "cm",
+            "sec",
+            "m"
+          ],
+          "required": true
+        },
+        {
+          "name": "Volume_Sets",
+          "type": "string",
+          "notes": "Integer-as-string or '-'",
+          "required": true
+        },
+        {
+          "name": "Volume_Reps",
+          "type": "string",
+          "notes": "Integer-as-string or '-'",
+          "required": true
+        },
+        {
+          "name": "Is_KPI",
+          "type": "enum",
+          "allowed": [
+            "True",
+            "False"
+          ],
+          "required": true
+        },
+        {
+          "name": "RPE",
+          "type": "string",
+          "notes": "Integer-as-string or '-'",
+          "required": true
+        }
       ]
     },
-    {
-      "name": "Volume_Detail",
-      "type": "string",
-      "required": true
+    "match_details.csv": {
+      "columns": [
+        {
+          "name": "Session_Id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Sport",
+          "type": "enum",
+          "allowed": [
+            "Padel",
+            "Soccer",
+            "Tennis"
+          ],
+          "required": true
+        },
+        {
+          "name": "Match_Result",
+          "type": "enum",
+          "allowed": [
+            "Win",
+            "Loss",
+            "-"
+          ],
+          "required": true
+        },
+        {
+          "name": "Match_Type",
+          "type": "enum",
+          "allowed": [
+            "Friendly",
+            "Tournament",
+            "-"
+          ],
+          "required": true
+        },
+        {
+          "name": "Tournament_Category",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Score",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Partner",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Opponents",
+          "type": "string",
+          "required": true
+        }
+      ]
     },
-    {
-      "name": "RPE",
-      "type": "string",
-      "required": true,
-      "notes": "Use '-' when unknown"
-    },
-    {
-      "name": "HRV_Morning",
-      "type": "string",
-      "required": true,
-      "notes": "Integer-as-string or '-'"
-    },
-    {
-      "name": "RHR_Night",
-      "type": "string",
-      "required": true,
-      "notes": "Integer-as-string or '-'"
-    },
-    {
-      "name": "Comments",
-      "type": "string",
-      "required": true
-    }
-  ],
-  "volume_detail_rules": {
-    "Biometrics": {
-      "biometrics": {
-        "pattern": "^\\d+(?:\\.\\d+)?$",
-        "notes": "Represents sleep hours as a decimal number (e.g. 7.5, 8.0, 6.8)"
-      }
-    },
-    "Strength": {
-      "kpi": {
-        "pattern": "^\\d+(?:\\.\\d+)?kg\\s+(?:-\\s+\\d+x\\d+|x\\d+\\s+top set)(?:;\\s+\\d+(?:\\.\\d+)?kg\\s+(?:-\\s+\\d+x\\d+|x\\d+\\s+top set))*$",
-        "notes": "Format for principal lifts. Examples: '90kg - 3x4', '110kg x3 top set; 100kg - 2x4'"
-      },
-      "accessory": {
-        "pattern": "^\\d+(?:\\.\\d+)?kg\\s+-\\s+\\d+x\\d+(?:;\\s+\\d+(?:\\.\\d+)?kg\\s+-\\s+\\d+x\\d+)*$",
-        "notes": "Format for accessories. Example: '100kg - 3x10'"
-      },
-      "session": {
-        "pattern": "^.*$",
-        "notes": "Free-text summary of the gym session"
-      }
-    },
-    "Padel": {
-      "session": {
-        "pattern": "^(?:Win|Loss|-)\\s+\\|\\s+\\d+h(?:\\s+\\d+m)?$",
-        "notes": "Format for padel matches. Examples: 'Win | 1h 30m', 'Loss | 1h 30m', '- | 1h'. Here '-' means unknown result, not explicitly reported result, or a non-match practice session."
-      }
+    "supplements.csv": {
+      "columns": [
+        {
+          "name": "Date",
+          "type": "date",
+          "format": "YYYY-MM-DD",
+          "required": true
+        },
+        {
+          "name": "Protein",
+          "type": "enum",
+          "allowed": ["True", "False", "-"],
+          "required": true
+        },
+        {
+          "name": "Creatine",
+          "type": "enum",
+          "allowed": ["True", "False", "-"],
+          "required": true
+        },
+        {
+          "name": "Magnesium",
+          "type": "enum",
+          "allowed": ["True", "False", "-"],
+          "required": true
+        },
+        {
+          "name": "Retinol",
+          "type": "enum",
+          "allowed": ["True", "False", "-"],
+          "required": true
+        },
+        {
+          "name": "Ashwagandha",
+          "type": "enum",
+          "allowed": ["True", "False", "-"],
+          "required": true
+        }
+      ]
     }
   }
 }
