@@ -1,28 +1,60 @@
 # Performance subsystem
 
-Este subsistema guarda la fuente de verdad de:
+Este subsistema guarda la fuente de verdad operativa de performance y recovery.
+
+Incluye:
 - sueño,
-- entrenamiento,
+- HRV/RHR,
+- calidad subjetiva y energía,
+- sesiones de entrenamiento / recovery / trabajo / social,
+- métricas de rendimiento,
+- detalles de partidos,
 - suplementos,
-- reglas y esquema del log.
+- reglas, esquema y tooling del subsistema.
 
 ## Archivos clave
-- CSV canónico: `data/performance_log.csv`
+- Datos canónicos:
+  - `data/biometrics.csv`
+  - `data/sessions.csv`
+  - `data/fitness_metrics.csv`
+  - `data/match_details.csv`
+  - `data/supplements.csv`
 - Schema: `schema/SCHEMA.json`
 - Reglas operativas: `rules/SYSTEM_RULES.md`
-- Script de backup: `ops/backup_performance_log.sh`
+- Script de validación: `ops/validate_log.py`
+- Script de backup canónico: `ops/backup_performance_data.sh`
+- Alias legacy del comando de backup: `ops/backup_performance_log.sh` (redirige al backup multi-CSV)
 - Backups locales ignorados por git: `backups/`
 
+## Modelo actual
+La arquitectura actual es multi-CSV.
+Cada archivo representa una entidad distinta para evitar mezclar métricas heterogéneas en una sola fila:
+
+- `biometrics.csv` → recovery diario y sueño
+- `sessions.csv` → eventos/sesiones principales del día
+- `fitness_metrics.csv` → lifts, tests y métricas de performance ligadas a una sesión
+- `match_details.csv` → detalle competitivo de deportes de partido
+- `supplements.csv` → adherencia diaria a suplementos
+
 ## Criterio de logging
-- una fila `biometrics` por día cuando hay métricas de sueño/recovery,
-- una fila `session` por evento significativo,
-- filas `kpi` solo para lifts/tests que cambian decisiones,
-- filas `accessory` solo cuando preservarlas realmente agrega valor.
+- registrar recovery/sueño en `biometrics.csv` cuando haya datos reportados,
+- registrar cada evento principal en `sessions.csv`,
+- registrar sólo métricas de performance que cambian decisiones en `fitness_metrics.csv`,
+- registrar detalle de partidos sólo cuando aporta contexto competitivo útil,
+- registrar suplementos en `supplements.csv` sin inventar tomas no reportadas.
 
 ## Convención de placeholders
 - `-` significa dato desconocido, no reportado o no disponible.
 - No significa cero.
-- En pádel, `- | 1h 30m` significa que la duración es conocida pero el resultado no fue reportado explícitamente o no fue una sesión claramente competitiva.
+- No debe reinterpretarse automáticamente como resultado negativo.
+- Si una distinción futura requiere más precisión, debe modelarse en schema/documentación, no inferirse en silencio.
 
-## Compatibilidad
-Existen symlinks de compatibilidad desde la ruta histórica `~/.hermes/data/performance/` hacia esta nueva estructura para no romper workflows viejos durante la transición.
+## Regla operativa
+Antes de modificar el subsistema:
+1. `git pull --rebase`
+2. editar
+3. validar (`python3 performance/ops/validate_log.py`)
+4. si corresponde, generar backup (`performance/ops/backup_performance_data.sh`)
+5. `git add -A`
+6. commit con contexto
+7. push

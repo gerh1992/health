@@ -9,7 +9,7 @@ No completar huecos con suposiciones silenciosas.
 ## 2. Separar hechos de interpretación
 - Hechos estables → `context/profile.yaml`
 - Estado/objetivos/prioridades → `context/current-state.md`
-- Log operativo diario → `performance/data/performance_log.csv`
+- Log operativo diario → `performance/data/biometrics.csv`, `performance/data/sessions.csv`, `performance/data/fitness_metrics.csv`, `performance/data/match_details.csv`, `performance/data/supplements.csv`
 - Regla/sistema → `performance/rules/`
 - Evidencia médica → `medical/`
 
@@ -34,7 +34,7 @@ Guardar lo que cambia decisiones.
 No convertir el sistema en una bitácora exhaustiva de todo lo que pasó si eso no mejora decisiones.
 
 ## 6. No mezclar contexto estable con eventos diarios
-Edad, sexo, altura, metas, sesgos interpretativos, protocolos y antecedentes no pertenecen al CSV diario.
+Edad, sexo, altura, metas, sesgos interpretativos, protocolos y antecedentes no pertenecen a los CSV diarios.
 
 ## 7. No confundir ausencia de entrenamiento con ausencia de carga
 Pádel, mal sueño, estrés, enfermedad, alcohol, caminatas, molestias y fatiga acumulada también afectan la carga real del sistema.
@@ -60,5 +60,9 @@ Después de modificar:
 2. `context/current-state.md`
 3. `context/decision-rules.md`
 4. `performance/rules/SYSTEM_RULES.md`
-5. `performance/data/performance_log.csv`
-6. `medical/` si existe información relevante
+5. `performance/data/biometrics.csv`
+6. `performance/data/sessions.csv`
+7. `performance/data/fitness_metrics.csv`
+8. `performance/data/match_details.csv`
+9. `performance/data/supplements.csv`
+10. `medical/` si existe información relevante

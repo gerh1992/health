@@ -19,7 +19,7 @@ Que una IA o una persona nueva, con **cero contexto previo**, pueda entrar al re
 ## Estado actual
 Hoy el repo tiene dos capas principales:
 - `context/` → contexto estable + reglas de lectura + mapa de fuentes
-- `performance/` → log operativo de sueño, entrenamiento, recovery y suplementos
+- `performance/` → capa operativa multi-CSV de sueño, entrenamiento, recovery, métricas y suplementos
 
 Y deja preparado:
 - `medical/` → evidencia clínica / estudios / lesiones / medicación / reports
@@ -39,13 +39,19 @@ health/
   performance/
     README.md
     data/
-      performance_log.csv
+      biometrics.csv
+      sessions.csv
+      fitness_metrics.csv
+      match_details.csv
+      supplements.csv
     schema/
       SCHEMA.json
     rules/
       SYSTEM_RULES.md
     ops/
-      backup_performance_log.sh
+      validate_log.py
+      backup_performance_data.sh
+      backup_performance_log.sh   # alias legacy del comando; delega al backup multi-CSV
     backups/           # ignorado por git
   medical/
     README.md
@@ -59,8 +65,12 @@ health/
 5. `context/data-sources.yaml`
 6. `performance/README.md`
 7. `performance/rules/SYSTEM_RULES.md`
-8. `performance/data/performance_log.csv`
-9. `medical/README.md`
+8. `performance/data/biometrics.csv`
+9. `performance/data/sessions.csv`
+10. `performance/data/fitness_metrics.csv`
+11. `performance/data/match_details.csv`
+12. `performance/data/supplements.csv`
+13. `medical/README.md`
 
 ## Workflow acordado
 1. `git pull --rebase`

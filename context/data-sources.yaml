@@ -1,5 +1,5 @@
 version: 1
-last_updated: 2026-06-09
+last_updated: 2026-06-10
 sources:
   - name: health_repo_root
     path: /home/ubuntu/.hermes/data/health
@@ -16,15 +16,30 @@ sources:
   - name: decision_rules
     path: context/decision-rules.md
     role: interpretation guardrails for humans and AIs
-  - name: performance_log
-    path: performance/data/performance_log.csv
-    role: canonical daily operational log for sleep, training, supplements, and recovery
+  - name: performance_biometrics
+    path: performance/data/biometrics.csv
+    role: canonical daily sleep and recovery log
+  - name: performance_sessions
+    path: performance/data/sessions.csv
+    role: canonical log of main daily sessions and events
+  - name: performance_fitness_metrics
+    path: performance/data/fitness_metrics.csv
+    role: canonical structured performance metrics linked to sessions
+  - name: performance_match_details
+    path: performance/data/match_details.csv
+    role: canonical competitive/sport-specific match detail log linked to sessions
+  - name: performance_supplements
+    path: performance/data/supplements.csv
+    role: canonical daily supplement adherence log
   - name: performance_schema
     path: performance/schema/SCHEMA.json
-    role: structural definition of the performance log
+    role: structural definition of the multi-CSV performance subsystem
   - name: performance_rules
     path: performance/rules/SYSTEM_RULES.md
     role: operational rules for editing and maintaining the performance subsystem
+  - name: performance_validation
+    path: performance/ops/validate_log.py
+    role: validation entrypoint for the multi-CSV performance subsystem
   - name: performance_backups
     path: performance/backups/
     role: local pre-edit safety snapshots; not versioned in git
@@ -40,7 +55,11 @@ read_order_for_new_agent:
   - context/decision-rules.md
   - performance/README.md
   - performance/rules/SYSTEM_RULES.md
-  - performance/data/performance_log.csv
+  - performance/data/biometrics.csv
+  - performance/data/sessions.csv
+  - performance/data/fitness_metrics.csv
+  - performance/data/match_details.csv
+  - performance/data/supplements.csv
   - medical/README.md
 notes:
   - If a file is not listed here, it should not be assumed to be canonical.

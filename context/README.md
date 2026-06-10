@@ -13,8 +13,13 @@ Si llegás sin contexto, el orden recomendado es:
 4. `context/decision-rules.md`
 5. `context/data-sources.yaml`
 6. `performance/README.md`
-7. `performance/data/performance_log.csv`
-8. `medical/README.md`
+7. `performance/rules/SYSTEM_RULES.md`
+8. `performance/data/biometrics.csv`
+9. `performance/data/sessions.csv`
+10. `performance/data/fitness_metrics.csv`
+11. `performance/data/match_details.csv`
+12. `performance/data/supplements.csv`
+13. `medical/README.md`
 
 ## Principio de diseño
 
@@ -25,12 +30,12 @@ Separar capas. No mezclar todo en un solo archivo.
 - **Current state** → objetivos, prioridades, protocolos y contexto activo.
 - **Decision rules** → cómo interpretar y cómo no interpretar los datos.
 - **Data sources** → mapa de fuentes de verdad del repo.
-- **Performance** → log operativo diario.
+- **Performance** → capa operativa diaria multi-CSV.
 - **Medical** → evidencia clínica, estudios, diagnósticos, medicación y notas de salud cuando existan.
 
 ## Regla crítica
 
-No usar el CSV diario para guardar contexto estable.
+No usar los CSV diarios para guardar contexto estable.
 
 Ejemplos de contexto estable:
 - edad,
@@ -41,7 +46,7 @@ Ejemplos de contexto estable:
 - preferencias de interpretación,
 - reglas del sistema.
 
-Eso va acá, no en el log diario.
+Eso va acá, no en la capa operativa diaria.
 
 ## Regla de ausencia de datos
 

@@ -1,6 +1,6 @@
 # Health brief
 
-_Last updated: 2026-06-09_
+_Last updated: 2026-06-10_
 
 ## Qué es este documento
 Este archivo es el **resumen ejecutivo de entrada** para cualquier IA o persona que necesite contexto útil rápido.
@@ -34,16 +34,18 @@ El usuario prefiere:
 - y lectura longitudinal antes que conclusiones por datos aislados.
 
 ## Qué está más maduro hoy
-El subsistema más maduro hoy es `performance/`, con tracking de:
+El subsistema más maduro hoy es `performance/`, con una arquitectura multi-CSV para tracking de:
 - sueño,
 - HRV,
 - RHR,
 - energía/calidad subjetiva,
-- entrenamiento,
+- sesiones,
+- métricas de rendimiento,
+- detalles de partidos,
 - suplementos,
-- resúmenes de consistencia.
+- y reglas de consistencia del sistema.
 
-## Cómo interpretar el performance log
+## Cómo interpretar la capa de performance
 No leer los datos diarios de forma aislada.
 Cruzar siempre con:
 - baseline personal reciente,
@@ -80,8 +82,12 @@ No asumir que no existen: asumir solamente que **todavía no están documentados
 3. `context/decision-rules.md`
 4. `context/data-sources.yaml`
 5. `performance/rules/SYSTEM_RULES.md`
-6. `performance/data/performance_log.csv`
-7. `medical/README.md`
+6. `performance/data/biometrics.csv`
+7. `performance/data/sessions.csv`
+8. `performance/data/fitness_metrics.csv`
+9. `performance/data/match_details.csv`
+10. `performance/data/supplements.csv`
+11. `medical/README.md`
 
 ## Uso correcto de este archivo
 Usar este documento para orientarse rápido.
