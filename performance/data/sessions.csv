@@ -30,6 +30,6 @@ Session_Id,Date,Category,Activity,Duration_Minutes,RPE,Session_Tag,Comments
 2026-06-06-strength,2026-06-06,Strength,Gym Session,60,-,Low,Gym lower low; suplementos: todos menos ashwagandha
 2026-06-07-recovery,2026-06-07,Recovery,Recovery Session,60,-,Recovery,Nada; suplementos: todos
 2026-06-08-padel,2026-06-08,Padel,Padel Session,90,-,Match,Padel; suplementos: todos
-2026-06-08-strength,2026-06-08,Strength,Gym Session,60,-,High,Gym lower high; resto accesorios; suplementos: todos
+2026-06-08-strength,2026-06-08,Strength,Gym Session,60,9,High,Gym lower high; resto accesorios; suplementos: todos
 2026-06-09-padel,2026-06-09,Padel,Padel Session,90,-,Match,Padel; suplementos diurnos ok; faltan los nocturnos
-2026-06-10-strength,2026-06-10,Strength,Gym Session,60,-,Low,Gym upper low tranquilo; duracion inferida 60 min; suplementos: todos.
+2026-06-10-strength,2026-06-10,Strength,Gym Session,60,5,Low,Gym upper low tranquilo; duracion inferida 60 min; suplementos: todos.

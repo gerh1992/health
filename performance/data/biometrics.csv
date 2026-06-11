@@ -1,20 +1,20 @@
 Date,Sleep_Hours,HRV_Morning,RHR_Night,Sleep_Quality,Energy_Level,Comments
-2026-05-06,7.03,52,62,-,-,"Me siento un poco cansado en las piernas de ayer, estoy dudando si ir al gym y si voy cuan intenso debo ir."
-2026-05-07,6.13,39,64,-,-,"Me siento bastante bien, mucho mejor que ayer, lo que si cene mucho, pesado y bastante tarde, creo que afecto las metricas de sueño eso."
-2026-05-08,8.9,47,63,8,-,"Muy buen descanso, RHR bajo y HRV recuperandose."
-2026-05-09,5.75,46,69,-,-,Entrene modalidad mas volumen para acumular carga de trabajo
-2026-05-10,7.68,-,-,3,-,"Fue post boliche, dormi muy mal porque tome mucho y me acoste 6AM"
-2026-05-11,6.65,68,60,-,-,Me levante bastante bien
-2026-05-12,7.1,64,62,-,-,Me levante muy bien para haber entrenado pesado
-2026-05-13,7.48,42,67,-,-,Siento que el lomo post padel me hizo dormir pesado
-2026-05-14,9.07,56,62,-,-,me siento muy bien despues de dormir bien ayer
-2026-05-15,7.12,49,62,-,-,me siento bien
-2026-05-16,7.75,53,62,-,-,
-2026-05-17,8.67,58,59,-,-,
-2026-05-18,7,55,61,-,-,
-2026-05-19,6,53,60,-,-,
-2026-05-20,6,49,64,-,-,
-2026-05-21,9.5,48,64,-,-,
+2026-05-06,7.03,52,62,7,5,"Me siento un poco cansado en las piernas de ayer, estoy dudando si ir al gym y si voy cuan intenso debo ir."
+2026-05-07,6.13,39,64,6,6,"Me siento bastante bien, mucho mejor que ayer, lo que si cene mucho, pesado y bastante tarde, creo que afecto las metricas de sueño eso."
+2026-05-08,8.9,47,63,8,8,"Muy buen descanso, RHR bajo y HRV recuperandose."
+2026-05-09,5.75,46,69,5,5,Entrene modalidad mas volumen para acumular carga de trabajo
+2026-05-10,7.68,-,-,3,2,"Fue post boliche, dormi muy mal porque tome mucho y me acoste 6AM"
+2026-05-11,6.65,68,60,9,9,Me levante bastante bien
+2026-05-12,7.1,64,62,9,8,Me levante muy bien para haber entrenado pesado
+2026-05-13,7.48,42,67,5,5,Siento que el lomo post padel me hizo dormir pesado
+2026-05-14,9.07,56,62,8,8,me siento muy bien despues de dormir bien ayer
+2026-05-15,7.12,49,62,6,7,me siento bien
+2026-05-16,7.75,53,62,7,7,
+2026-05-17,8.67,58,59,8,9,
+2026-05-18,7,55,61,7,7,
+2026-05-19,6,53,60,6,7,
+2026-05-20,6,49,64,7,8,
+2026-05-21,9.5,48,64,9,8,
 2026-05-22,7.25,46,64,6,7,Calidad normal; energia 7/10
 2026-05-24,7.8,53,68,8,4,Calidad buena; energia baja; todavia no estoy recuperado de la salida de anteayer a la noche
 2026-05-25,7.0,63,59,9,-,Calidad 9/10
