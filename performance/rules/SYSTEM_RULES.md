@@ -8,6 +8,7 @@ All files are located relative to the repository root `/home/ubuntu/.hermes/data
   - `performance/data/sessions.csv`
   - `performance/data/fitness_metrics.csv`
   - `performance/data/match_details.csv`
+  - `performance/data/padel_match_reviews.csv`
   - `performance/data/supplements.csv`
 - Validation script: `performance/ops/validate_log.py`
 
@@ -73,6 +74,35 @@ Logs daily intake of supplements. Exactly one row per date.
 - `Retinol`: Enum: `True`, `False`, `-`.
 - `Ashwagandha`: Enum: `True`, `False`, `-`.
 
+### 6. `padel_match_reviews.csv` (Tactical & Reflective Match Reviews)
+Stores subjective tactical reviews for pattern detection and future experimentation.
+- `Review_Id`: Primary Key (e.g. `r-2026-06-20-padel-m1`).
+- `Date`: String, format `YYYY-MM-DD`.
+- `Session_Id`: Foreign Key linking to `sessions.csv`.
+- `Match_Id`: Foreign Key linking to `match_details.csv` or `-` if not yet attributed.
+- `Sport`: Enum: `Padel`.
+- `Role`: Enum: `Drive`, `Reves`, `-`.
+- `Partner_Name`: String or `-`.
+- `Partner_Level_Relative`: Enum: `Lower`, `Similar`, `Higher`, `-`.
+- `Opponent_Level_Notes`: String or `-`.
+- `Match_Context`: Enum: `Tournament`, `Friendly`, `Practice`, `-`.
+- `Result`: Enum: `Win`, `Loss`, `-`.
+- `Emotional_Tone`: String or `-`.
+- `Main_Frustration`: String or `-`.
+- `Main_Tactical_Problem`: String or `-`.
+- `What_I_Did_Well`: String or `-`.
+- `What_I_Did_Poorly`: String or `-`.
+- `Adjustment_I_Needed`: String or `-`.
+- `Adjustment_I_Tried`: String or `-`.
+- `Next_Experiment`: String or `-`.
+- `Drive_Intervention_Score`: Integer `1-5` or `-`.
+- `Net_Presence_Score`: Integer `1-5` or `-`.
+- `Volley_Damage_Score`: Integer `1-5` or `-`.
+- `Tactical_Influence_Score`: Integer `1-5` or `-`.
+- `Mental_Composure_Score`: Integer `1-5` or `-`.
+- `Key_Pattern_Tags`: Pipe-delimited tags or `-`.
+- `Free_Notes`: String or `-`.
+
 ---
 
 ## Placeholder Semantics
@@ -86,6 +116,13 @@ Logs daily intake of supplements. Exactly one row per date.
 - `match_details.csv` stores one row per individual match.
 - A tournament day can therefore have one `Session_Id` in `sessions.csv` and multiple `Match_Id` rows in `match_details.csv`.
 - Preserve reported stage/context (`group stage`, `copa de plata`, etc.) in structured fields when available instead of compressing everything into one score string.
+
+## Padel review ingestion rule
+- Free-text user reflection is a valid input format for tactical reviews.
+- Hermes should infer structured fields where confidence is high.
+- Hermes should ask direct follow-up questions only for materially useful missing fields.
+- Reviews belong in `padel_match_reviews.csv`, not in `sessions.csv` or `match_details.csv` comments.
+- Subjective reflection must stay linkable to objective match rows through `Session_Id` and `Match_Id` whenever possible.
 
 ---
 

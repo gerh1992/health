@@ -12,6 +12,7 @@ FILES=(
   "sessions.csv"
   "fitness_metrics.csv"
   "match_details.csv"
+  "padel_match_reviews.csv"
   "supplements.csv"
 )
 

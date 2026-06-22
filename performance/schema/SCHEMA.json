@@ -328,6 +328,166 @@
           "required": true
         }
       ]
+    },
+    "padel_match_reviews.csv": {
+      "columns": [
+        {
+          "name": "Review_Id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Date",
+          "type": "date",
+          "format": "YYYY-MM-DD",
+          "required": true
+        },
+        {
+          "name": "Session_Id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Match_Id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Sport",
+          "type": "enum",
+          "allowed": [
+            "Padel"
+          ],
+          "required": true
+        },
+        {
+          "name": "Role",
+          "type": "enum",
+          "allowed": [
+            "Drive",
+            "Reves",
+            "-"
+          ],
+          "required": true
+        },
+        {
+          "name": "Partner_Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Partner_Level_Relative",
+          "type": "enum",
+          "allowed": [
+            "Lower",
+            "Similar",
+            "Higher",
+            "-"
+          ],
+          "required": true
+        },
+        {
+          "name": "Opponent_Level_Notes",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Match_Context",
+          "type": "enum",
+          "allowed": [
+            "Tournament",
+            "Friendly",
+            "Practice",
+            "-"
+          ],
+          "required": true
+        },
+        {
+          "name": "Result",
+          "type": "enum",
+          "allowed": [
+            "Win",
+            "Loss",
+            "-"
+          ],
+          "required": true
+        },
+        {
+          "name": "Emotional_Tone",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Main_Frustration",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Main_Tactical_Problem",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "What_I_Did_Well",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "What_I_Did_Poorly",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Adjustment_I_Needed",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Adjustment_I_Tried",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Next_Experiment",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Drive_Intervention_Score",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Net_Presence_Score",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Volley_Damage_Score",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Tactical_Influence_Score",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Mental_Composure_Score",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Key_Pattern_Tags",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Free_Notes",
+          "type": "string",
+          "required": true
+        }
+      ]
     }
   }
 }

@@ -34,11 +34,15 @@ def main():
     session_ids = set()
     referenced_session_ids_in_metrics = set()
     referenced_session_ids_in_matches = set()
+    referenced_session_ids_in_reviews = set()
+    referenced_match_ids_in_reviews = set()
+    match_ids = set()
     primary_key_columns = {
         "biometrics.csv": "Date",
         "sessions.csv": "Session_Id",
         "fitness_metrics.csv": "Metric_Id",
         "match_details.csv": "Match_Id",
+        "padel_match_reviews.csv": "Review_Id",
         "supplements.csv": "Date",
     }
     seen_primary_keys = {file_name: set() for file_name in files_schema.keys()}
@@ -175,6 +179,7 @@ def main():
                     referenced_session_ids_in_metrics.add(row.get("Session_Id"))
                 elif file_name == "match_details.csv":
                     referenced_session_ids_in_matches.add(row.get("Session_Id"))
+                    match_ids.add(row.get("Match_Id"))
 
                     match_number = row.get("Match_Number")
                     if match_number != "-":
@@ -189,6 +194,37 @@ def main():
                         except ValueError:
                             # integer validation is already handled above
                             pass
+                elif file_name == "padel_match_reviews.csv":
+                    referenced_session_ids_in_reviews.add(row.get("Session_Id"))
+                    review_match_id = row.get("Match_Id")
+                    if review_match_id != "-":
+                        referenced_match_ids_in_reviews.add(review_match_id)
+
+                    for score_col in [
+                        "Drive_Intervention_Score",
+                        "Net_Presence_Score",
+                        "Volley_Damage_Score",
+                        "Tactical_Influence_Score",
+                        "Mental_Composure_Score",
+                    ]:
+                        score_val = row.get(score_col)
+                        if score_val != "-":
+                            try:
+                                score_num = int(score_val)
+                                if score_num < 1 or score_num > 5:
+                                    errors.append({
+                                        "file": file_name,
+                                        "line": line_num,
+                                        "col": score_col,
+                                        "msg": f"Value '{score_val}' must be between 1 and 5 or '-'"
+                                    })
+                            except ValueError:
+                                errors.append({
+                                    "file": file_name,
+                                    "line": line_num,
+                                    "col": score_col,
+                                    "msg": f"Value '{score_val}' must be an integer 1-5 or '-'"
+                                })
 
     # 3. Validate Referential Integrity (Foreign Keys)
     print("🔗 Validating relational integrity...")
@@ -211,6 +247,26 @@ def main():
                 "line": "N/A",
                 "col": "Session_Id",
                 "msg": f"Foreign Key Error: Session_Id '{sid}' referenced in match_details does not exist in sessions.csv"
+            })
+
+    # Check that every session referenced in padel reviews exists in sessions.csv
+    for sid in referenced_session_ids_in_reviews:
+        if sid not in session_ids:
+            errors.append({
+                "file": "padel_match_reviews.csv",
+                "line": "N/A",
+                "col": "Session_Id",
+                "msg": f"Foreign Key Error: Session_Id '{sid}' referenced in padel_match_reviews does not exist in sessions.csv"
+            })
+
+    # Check that every match referenced in padel reviews exists in match_details.csv
+    for mid in referenced_match_ids_in_reviews:
+        if mid not in match_ids:
+            errors.append({
+                "file": "padel_match_reviews.csv",
+                "line": "N/A",
+                "col": "Match_Id",
+                "msg": f"Foreign Key Error: Match_Id '{mid}' referenced in padel_match_reviews does not exist in match_details.csv"
             })
 
     # 4. Print Summary and Exit
