@@ -1,19 +1,25 @@
-Session_Id,Sport,Match_Result,Match_Type,Tournament_Category,Score,Partner,Opponents
-2026-05-05-padel,Padel,Loss,Friendly,-,-,-,-
-2026-05-07-padel,Padel,Loss,Friendly,-,-,-,-
-2026-05-12-padel,Padel,Win,Friendly,-,-,-,-
-2026-05-19-padel,Padel,Win,Friendly,-,-,-,-
-2026-05-21-padel,Padel,Win,Friendly,-,-,-,-
-2026-05-22-padel,Padel,Win,Friendly,-,-,-,-
-2026-05-26-padel,Padel,-,-,-,-,-,-
-2026-05-28-padel,Padel,-,-,-,-,-,-
-2026-06-02-padel,Padel,-,-,-,-,-,-
-2026-06-04-padel,Padel,-,-,-,-,-,-
-2026-06-05-padel,Padel,-,-,-,-,-,-
-2026-06-08-padel,Padel,-,-,-,-,-,-
-2026-06-09-padel,Padel,Win,Friendly,-,6-3; 6-1; 6-0,MauroP,JuanS y LeanR; Guidor y Patts; NicoC y JuanG
-2026-06-11-padel,Padel,Loss,Friendly,-,6-4; 4-6; 6-4,JuanS,JuanpG y GuidoR
-2026-06-12-padel,Padel,Loss,Friendly,-,7-6; 4-6; 4-6,Nito,Guidor y JuanG
-2026-06-17-padel,Padel,Win,Friendly,-,4-6; 6-4; 6-4,JuanG,LeanR y NicoC
-2026-06-18-padel,Padel,Loss,Friendly,-,4-6; 6-4; 6-7,GuidoR,JPG y Sher
-2026-06-20-padel,Padel,Loss,Tournament,Americano / copa de plata,1-6; 3-6; 2-6; 6-1; 3-6,GuidoR,JuanC y JuanL; GonzaloR y EmmaR; JorgeU y JavierP; DiegoB y MatiasF; JuaniG y RafaG
+Match_Id,Session_Id,Sport,Match_Number,Match_Result,Match_Type,Tournament_Category,Match_Stage,Score,Partner,Opponents
+2026-05-05-padel-m1,2026-05-05-padel,Padel,1,Loss,Friendly,-,-,-,-,-
+2026-05-07-padel-m1,2026-05-07-padel,Padel,1,Loss,Friendly,-,-,-,-,-
+2026-05-12-padel-m1,2026-05-12-padel,Padel,1,Win,Friendly,-,-,-,-,-
+2026-05-19-padel-m1,2026-05-19-padel,Padel,1,Win,Friendly,-,-,-,-,-
+2026-05-21-padel-m1,2026-05-21-padel,Padel,1,Win,Friendly,-,-,-,-,-
+2026-05-22-padel-m1,2026-05-22-padel,Padel,1,Win,Friendly,-,-,-,-,-
+2026-05-26-padel-m1,2026-05-26-padel,Padel,1,-,-,-,-,-,-,-
+2026-05-28-padel-m1,2026-05-28-padel,Padel,1,-,-,-,-,-,-,-
+2026-06-02-padel-m1,2026-06-02-padel,Padel,1,-,-,-,-,-,-,-
+2026-06-04-padel-m1,2026-06-04-padel,Padel,1,-,-,-,-,-,-,-
+2026-06-05-padel-m1,2026-06-05-padel,Padel,1,-,-,-,-,-,-,-
+2026-06-08-padel-m1,2026-06-08-padel,Padel,1,-,-,-,-,-,-,-
+2026-06-09-padel-m1,2026-06-09-padel,Padel,1,Win,Friendly,-,-,6-3,MauroP,JuanS y LeanR
+2026-06-09-padel-m2,2026-06-09-padel,Padel,2,Win,Friendly,-,-,6-1,MauroP,Guidor y Patts
+2026-06-09-padel-m3,2026-06-09-padel,Padel,3,Win,Friendly,-,-,6-0,MauroP,NicoC y JuanG
+2026-06-11-padel-m1,2026-06-11-padel,Padel,1,Loss,Friendly,-,-,6-4; 4-6; 6-4,JuanS,JuanpG y GuidoR
+2026-06-12-padel-m1,2026-06-12-padel,Padel,1,Loss,Friendly,-,-,7-6; 4-6; 4-6,Nito,Guidor y JuanG
+2026-06-17-padel-m1,2026-06-17-padel,Padel,1,Win,Friendly,-,-,4-6; 6-4; 6-4,JuanG,LeanR y NicoC
+2026-06-18-padel-m1,2026-06-18-padel,Padel,1,Loss,Friendly,-,-,4-6; 6-4; 6-7,GuidoR,JPG y Sher
+2026-06-20-padel-m1,2026-06-20-padel,Padel,1,Loss,Tournament,Americano,grupo,1-6,GuidoR,JuanC y JuanL
+2026-06-20-padel-m2,2026-06-20-padel,Padel,2,Loss,Tournament,Americano,grupo,3-6,GuidoR,GonzaloR y EmmaR
+2026-06-20-padel-m3,2026-06-20-padel,Padel,3,Loss,Tournament,Americano,grupo,2-6,GuidoR,JorgeU y JavierP
+2026-06-20-padel-m4,2026-06-20-padel,Padel,4,Win,Tournament,Americano,copa de plata cuartos,6-1,GuidoR,DiegoB y MatiasF
+2026-06-20-padel-m5,2026-06-20-padel,Padel,5,Loss,Tournament,Americano,copa de plata semifinal,3-6,GuidoR,JuaniG y RafaG

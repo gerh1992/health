@@ -188,6 +188,11 @@
     "match_details.csv": {
       "columns": [
         {
+          "name": "Match_Id",
+          "type": "string",
+          "required": true
+        },
+        {
           "name": "Session_Id",
           "type": "string",
           "required": true
@@ -200,6 +205,11 @@
             "Soccer",
             "Tennis"
           ],
+          "required": true
+        },
+        {
+          "name": "Match_Number",
+          "type": "integer",
           "required": true
         },
         {
@@ -224,6 +234,11 @@
         },
         {
           "name": "Tournament_Category",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Match_Stage",
           "type": "string",
           "required": true
         },

@@ -34,6 +34,14 @@ def main():
     session_ids = set()
     referenced_session_ids_in_metrics = set()
     referenced_session_ids_in_matches = set()
+    primary_key_columns = {
+        "biometrics.csv": "Date",
+        "sessions.csv": "Session_Id",
+        "fitness_metrics.csv": "Metric_Id",
+        "match_details.csv": "Match_Id",
+        "supplements.csv": "Date",
+    }
+    seen_primary_keys = {file_name: set() for file_name in files_schema.keys()}
 
     # 2. Validate columns, formats, and collect Session_Ids
     for file_name, file_spec in files_schema.items():
@@ -97,6 +105,19 @@ def main():
                                 "msg": f"Non-existent or invalid date '{date_val}'"
                             })
 
+                pk_col = primary_key_columns.get(file_name)
+                if pk_col:
+                    pk_val = row.get(pk_col)
+                    if pk_val in seen_primary_keys[file_name]:
+                        errors.append({
+                            "file": file_name,
+                            "line": line_num,
+                            "col": pk_col,
+                            "msg": f"Duplicate primary key '{pk_val}'"
+                        })
+                    else:
+                        seen_primary_keys[file_name].add(pk_val)
+
                 # Validate specific columns
                 for col in columns_spec:
                     col_name = col["name"]
@@ -154,6 +175,20 @@ def main():
                     referenced_session_ids_in_metrics.add(row.get("Session_Id"))
                 elif file_name == "match_details.csv":
                     referenced_session_ids_in_matches.add(row.get("Session_Id"))
+
+                    match_number = row.get("Match_Number")
+                    if match_number != "-":
+                        try:
+                            if int(match_number) < 1:
+                                errors.append({
+                                    "file": file_name,
+                                    "line": line_num,
+                                    "col": "Match_Number",
+                                    "msg": f"Match_Number '{match_number}' must be >= 1"
+                                })
+                        except ValueError:
+                            # integer validation is already handled above
+                            pass
 
     # 3. Validate Referential Integrity (Foreign Keys)
     print("🔗 Validating relational integrity...")

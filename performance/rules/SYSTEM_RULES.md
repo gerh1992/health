@@ -50,12 +50,15 @@ Stores granular performance values (lifts, jumps, speed/sprints). Every row link
 - `RPE`: Integer (1-10) or `-`.
 
 ### 4. `match_details.csv` (Team Sports & Competitive Matches)
-Stores details for competitive team sports. Links to `sessions.csv` via `Session_Id`.
-- `Session_Id`: Primary Key & Foreign Key linking to `sessions.csv`.
+Stores details for competitive team sports at the individual-match level. Multiple rows may link to the same session in `sessions.csv` when a tournament or multi-match day happens.
+- `Match_Id`: Primary Key (e.g. `YYYY-MM-DD-padel-m1`).
+- `Session_Id`: Foreign Key linking to `sessions.csv`.
 - `Sport`: Enum: `Padel`, `Soccer`, `Tennis`.
+- `Match_Number`: Integer sequence within the parent session (`1`, `2`, `3`, ...).
 - `Match_Result`: Enum: `Win`, `Loss`, `-` (for practices or recreational matches).
 - `Match_Type`: Enum: `Friendly`, `Tournament`, `-`.
 - `Tournament_Category`: Level of the tournament (e.g. `7ma`, `6ta`, `1ra` or `-` if friendly/recreational).
+- `Match_Stage`: Stage label (e.g. `group stage`, `quarterfinal`, `semifinal` or `-`).
 - `Score`: String score (e.g. `6-4 6-2`, `5-3` or `-`).
 - `Partner`: Name of teammate(s) or `-`.
 - `Opponents`: Name of opponent(s) or `-`.
@@ -76,7 +79,13 @@ Logs daily intake of supplements. Exactly one row per date.
 - `-` always means **unknown / not reported by the user / intentionally left blank because the data point is unavailable**.
 - `-` does **not** mean zero.
 - `-` does **not** mean a negative result.
-- In `match_details.csv`, `Match_Result: -` means the session was non-competitive, a practice, or the result was not explicitly reported.
+- In `match_details.csv`, `Match_Result: -` means the individual match row was non-competitive, a practice, or the result was not explicitly reported.
+
+## Multi-match session rule
+- `sessions.csv` stays at the session/day level.
+- `match_details.csv` stores one row per individual match.
+- A tournament day can therefore have one `Session_Id` in `sessions.csv` and multiple `Match_Id` rows in `match_details.csv`.
+- Preserve reported stage/context (`group stage`, `copa de plata`, etc.) in structured fields when available instead of compressing everything into one score string.
 
 ---
 

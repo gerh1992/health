@@ -33,7 +33,7 @@ Cada archivo representa una entidad distinta para evitar mezclar métricas heter
 - `biometrics.csv` → recovery diario y sueño
 - `sessions.csv` → eventos/sesiones principales del día
 - `fitness_metrics.csv` → lifts, tests y métricas de performance ligadas a una sesión
-- `match_details.csv` → detalle competitivo de deportes de partido
+- `match_details.csv` → detalle competitivo por partido individual, incluso cuando varias filas pertenecen a una misma sesión/día
 - `supplements.csv` → adherencia diaria a suplementos
 
 ## Criterio de logging
@@ -41,6 +41,7 @@ Cada archivo representa una entidad distinta para evitar mezclar métricas heter
 - registrar cada evento principal en `sessions.csv`,
 - registrar sólo métricas de performance que cambian decisiones en `fitness_metrics.csv`,
 - registrar detalle de partidos sólo cuando aporta contexto competitivo útil,
+- cuando hay varios partidos en una misma sesión/día, registrar una fila por partido en `match_details.csv` ligada al mismo `Session_Id`,
 - registrar suplementos en `supplements.csv` sin inventar tomas no reportadas.
 
 ## Convención de placeholders
