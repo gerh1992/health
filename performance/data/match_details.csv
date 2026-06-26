@@ -23,3 +23,9 @@ Match_Id,Session_Id,Sport,Match_Number,Match_Result,Match_Type,Tournament_Catego
 2026-06-20-padel-m3,2026-06-20-padel,Padel,3,Loss,Tournament,Americano,grupo,2-6,GuidoR,JorgeU y JavierP
 2026-06-20-padel-m4,2026-06-20-padel,Padel,4,Win,Tournament,Americano,copa de plata cuartos,6-1,GuidoR,DiegoB y MatiasF
 2026-06-20-padel-m5,2026-06-20-padel,Padel,5,Loss,Tournament,Americano,copa de plata semifinal,3-6,GuidoR,JuaniG y RafaG
+2026-06-23-padel-m1,2026-06-23-padel,Padel,1,Loss,Friendly,-,-,3-6,JuanG,MauroP y AgustinG
+2026-06-23-padel-m2,2026-06-23-padel,Padel,2,Loss,Friendly,-,-,3-6,JuanG,TicoR y NicoC
+2026-06-23-padel-m3,2026-06-23-padel,Padel,3,Win,Friendly,-,-,6-1,JuanG,Tomino y AndyV
+2026-06-24-padel-m1,2026-06-24-padel,Padel,1,Win,Friendly,-,-,6-1; 3-6; 7-6,JuanG,LuchoG y Negro
+2026-06-25-padel-m1,2026-06-25-padel,Padel,1,Loss,Friendly,-,-,6-3; 3-6; 4-6,GuidoR,JuampiG y JuanS
+
