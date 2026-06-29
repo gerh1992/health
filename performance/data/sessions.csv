@@ -39,9 +39,10 @@ Session_Id,Date,Category,Activity,Duration_Minutes,RPE,Session_Tag,Comments
 2026-06-17-padel,2026-06-17,Padel,Padel Session,90,8,Match,Ganó con JuanG contra LeanR y NicoC 4-6 6-4 6-4.
 2026-06-18-padel,2026-06-18,Padel,Padel Session,90,8,Match,Perdió con GuidoR contra JPG y Sher 4-6 6-4 6-7.
 2026-06-20-padel,2026-06-20,Padel,Padel Session,270,10,Match,Torneo de pádel americano; grupos 0-3; ganó cuartos de copa de plata; perdió semifinal de copa de plata.
-2026-06-23-padel,2026-06-23,Padel,Padel Session,90,-,Match,
-2026-06-24-padel,2026-06-24,Padel,Padel Session,90,-,Match,
-2026-06-25-padel,2026-06-25,Padel,Padel Session,90,-,Match,
+2026-06-23-padel,2026-06-23,Padel,Padel Session,90,8,Match,
+2026-06-24-padel,2026-06-24,Padel,Padel Session,90,8,Match,
+2026-06-25-padel,2026-06-25,Padel,Padel Session,90,8,Match,
 2026-06-26-padel,2026-06-26,Padel,Padel Session,90,10,Match,Perdió torneo 7ma categoría con JuanG contra Giacomelli y Sanchez 6-7 2-6.
 2026-06-27-padel,2026-06-27,Padel,Padel Session,90,10,Match,Perdió torneo 7ma categoría con JuanG contra Navarro y Lucero 1-6 4-6.
+
 
