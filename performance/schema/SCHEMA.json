@@ -17,26 +17,26 @@
         },
         {
           "name": "HRV_Morning",
-          "type": "string",
-          "notes": "Integer-as-string or '-'",
+          "type": "integer",
+          "notes": "Integer or '-'",
           "required": true
         },
         {
           "name": "RHR_Night",
-          "type": "string",
-          "notes": "Integer-as-string or '-'",
+          "type": "integer",
+          "notes": "Integer or '-'",
           "required": true
         },
         {
           "name": "Sleep_Quality",
-          "type": "string",
-          "notes": "Integer-as-string or '-'",
+          "type": "integer",
+          "notes": "Integer (1-10) or '-'",
           "required": true
         },
         {
           "name": "Energy_Level",
-          "type": "string",
-          "notes": "Integer-as-string or '-'",
+          "type": "integer",
+          "notes": "Integer (1-10) or '-'",
           "required": true
         },
         {
@@ -85,8 +85,8 @@
         },
         {
           "name": "RPE",
-          "type": "string",
-          "notes": "Integer-as-string or '-'",
+          "type": "integer",
+          "notes": "Integer (1-10) or '-'",
           "required": true
         },
         {
@@ -141,8 +141,8 @@
         },
         {
           "name": "Performance_Value",
-          "type": "string",
-          "notes": "Decimal-as-string or '-'",
+          "type": "decimal",
+          "notes": "Decimal or '-'",
           "required": true
         },
         {
@@ -158,14 +158,14 @@
         },
         {
           "name": "Volume_Sets",
-          "type": "string",
-          "notes": "Integer-as-string or '-'",
+          "type": "integer",
+          "notes": "Integer or '-'",
           "required": true
         },
         {
           "name": "Volume_Reps",
-          "type": "string",
-          "notes": "Integer-as-string or '-'",
+          "type": "integer",
+          "notes": "Integer or '-'",
           "required": true
         },
         {
@@ -179,8 +179,8 @@
         },
         {
           "name": "RPE",
-          "type": "string",
-          "notes": "Integer-as-string or '-'",
+          "type": "integer",
+          "notes": "Integer (1-10) or '-'",
           "required": true
         }
       ]
@@ -454,27 +454,32 @@
         },
         {
           "name": "Drive_Intervention_Score",
-          "type": "string",
+          "type": "integer",
+          "notes": "Integer (1-5) or '-'",
           "required": true
         },
         {
           "name": "Net_Presence_Score",
-          "type": "string",
+          "type": "integer",
+          "notes": "Integer (1-5) or '-'",
           "required": true
         },
         {
           "name": "Volley_Damage_Score",
-          "type": "string",
+          "type": "integer",
+          "notes": "Integer (1-5) or '-'",
           "required": true
         },
         {
           "name": "Tactical_Influence_Score",
-          "type": "string",
+          "type": "integer",
+          "notes": "Integer (1-5) or '-'",
           "required": true
         },
         {
           "name": "Mental_Composure_Score",
-          "type": "string",
+          "type": "integer",
+          "notes": "Integer (1-5) or '-'",
           "required": true
         },
         {

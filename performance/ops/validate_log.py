@@ -151,7 +151,23 @@ def main():
                     # Validate integers (or '-')
                     if col_type == "integer" and val != "-":
                         try:
-                            int(val)
+                            int_val = int(val)
+                            if int_val < 0:
+                                errors.append({
+                                    "file": file_name,
+                                    "line": line_num,
+                                    "col": col_name,
+                                    "msg": f"Value '{val}' must be non-negative or '-'"
+                                })
+                            # Custom range checks
+                            if col_name in ["RPE", "Sleep_Quality", "Energy_Level"]:
+                                if int_val < 1 or int_val > 10:
+                                    errors.append({
+                                        "file": file_name,
+                                        "line": line_num,
+                                        "col": col_name,
+                                        "msg": f"Value '{val}' must be between 1 and 10 or '-'"
+                                    })
                         except ValueError:
                             errors.append({
                                 "file": file_name,
@@ -163,7 +179,14 @@ def main():
                     # Validate decimals (or '-')
                     if col_type == "decimal" and val != "-":
                         try:
-                            float(val)
+                            dec_val = float(val)
+                            if dec_val < 0.0:
+                                errors.append({
+                                    "file": file_name,
+                                    "line": line_num,
+                                    "col": col_name,
+                                    "msg": f"Value '{val}' must be non-negative or '-'"
+                                })
                         except ValueError:
                             errors.append({
                                 "file": file_name,
