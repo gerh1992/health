@@ -28,6 +28,6 @@ Match_Id,Session_Id,Sport,Match_Number,Match_Result,Match_Type,Tournament_Catego
 2026-06-23-padel-m3,2026-06-23-padel,Padel,3,Win,Friendly,-,-,6-1,JuanG,Tomino y AndyV
 2026-06-24-padel-m1,2026-06-24-padel,Padel,1,Win,Friendly,-,-,6-1; 3-6; 7-6,JuanG,LuchoG y Negro
 2026-06-25-padel-m1,2026-06-25-padel,Padel,1,Loss,Friendly,-,-,6-3; 3-6; 4-6,GuidoR,JuampiG y JuanS
-2026-06-26-padel-m1,2026-06-26-padel,Padel,1,Loss,Tournament,7ma categoría,-,6-7; 2-6,JuanG,Giacomelli y Sanchez
-2026-06-27-padel-m1,2026-06-27-padel,Padel,1,Loss,Tournament,7ma categoría,-,1-6; 4-6,JuanG,Navarro y Lucero
+2026-06-26-padel-m1,2026-06-26-padel,Padel,1,Loss,Tournament,7ma categoría,fase de grupos,6-7; 2-6,JuanG,Giacomelli y Sanchez
+2026-06-27-padel-m1,2026-06-27-padel,Padel,1,Loss,Tournament,7ma categoría,octavos de final,1-6; 4-6,JuanG,Navarro y Lucero
 
