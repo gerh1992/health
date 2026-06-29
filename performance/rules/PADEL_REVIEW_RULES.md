@@ -85,6 +85,20 @@ Use `1-5`:
 Do not pretend precision that the user did not express.
 If score confidence is too low, use `-` and ask later if needed.
 
+### Legacy score-mapping rule for quick spoken reviews
+If the user gives five compact scores in natural language for a tactical review, default to this order unless the user states otherwise:
+1. role-specific intervention score (`Drive_Intervention_Score` for drive reviews; reuse this same field as the primary intervention/imposition score for revés reviews to preserve schema compatibility),
+2. `Net_Presence_Score`,
+3. `Volley_Damage_Score`,
+4. `Tactical_Influence_Score`,
+5. `Mental_Composure_Score`.
+
+If the user supplies those compact scores on a `1-10` spoken scale but the canonical schema requires `1-5`, normalize by `ceil(score / 2)` before writing.
+Examples: `1 -> 1`, `5 -> 3`, `6 -> 3`, `7 -> 4`, `8 -> 4`, `9 -> 5`, `10 -> 5`.
+
+When this mapping is used for a `Reves` review, state explicitly in the completion summary that the first score was stored in `Drive_Intervention_Score` as a schema-compatibility compromise rather than as a literal drive-only metric.
+When `1-10` scores are normalized into the `1-5` schema, state that conversion explicitly in the completion summary too.
+
 ## Tag rules
 Use compact, reusable tags separated by `|`.
 Prefer stable vocabulary over novel tags every time.
