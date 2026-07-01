@@ -47,3 +47,4 @@ Session_Id,Date,Category,Activity,Duration_Minutes,RPE,Session_Tag,Comments
 2026-06-29-strength,2026-06-29,Strength,Gym Session,60,-,Low,Gimnasio low
 2026-06-29-padel,2026-06-29,Padel,Padel Session,90,-,Match,Ganó con JuanG contra AguB y EmiR 4-6 7-6 6-3.
 2026-06-30-soccer,2026-06-30,Soccer,Fútbol 5,60,7,Match,Partidito tranquilo entre amigos.
+2026-07-01-strength,2026-07-01,Strength,Gym Session,60,-,Low,Gym upper low; duración 60 min inferida por convención existente del repo.
