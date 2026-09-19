@@ -17,7 +17,8 @@ Que una IA o una persona nueva, con **cero contexto previo**, pueda entrar al re
 - y qué información importante todavía falta documentar.
 
 ## Estado actual
-Hoy el repo tiene dos capas principales:
+Hoy el repo tiene estas capas:
+- `principles/` → **el porqué**: qué se optimiza, qué no, y los criterios estables que gobiernan el sistema (empezando por entrenamiento)
 - `context/` → contexto estable + reglas de lectura + mapa de fuentes
 - `performance/` → capa operativa multi-CSV de sueño, entrenamiento, recovery, métricas y suplementos
 
@@ -29,6 +30,9 @@ Y deja preparado:
 health/
   README.md
   .gitignore
+  principles/
+    README.md
+    TRAINING.md
   context/
     README.md
     health-brief.md
@@ -58,12 +62,13 @@ health/
 ```
 
 ## Orden de lectura recomendado para una IA o persona nueva
-1. `context/health-brief.md`
-2. `context/profile.yaml`
-3. `context/current-state.md`
-4. `context/decision-rules.md`
-5. `context/data-sources.yaml`
-6. `performance/README.md`
+1. `principles/TRAINING.md` *(nuevo: el porqué primero)*
+2. `context/health-brief.md`
+3. `context/profile.yaml`
+4. `context/current-state.md`
+5. `context/decision-rules.md`
+6. `context/data-sources.yaml`
+7. `performance/README.md`
 7. `performance/rules/SYSTEM_RULES.md`
 8. `performance/data/biometrics.csv`
 9. `performance/data/sessions.csv`
