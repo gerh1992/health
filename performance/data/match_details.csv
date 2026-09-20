@@ -31,9 +31,9 @@ Match_Id,Session_Id,Sport,Match_Number,Match_Result,Match_Type,Tournament_Catego
 2026-06-26-padel-m1,2026-06-26-padel,Padel,1,Loss,Tournament,7ma categoría,fase de grupos,6-7; 2-6,JuanG,Giacomelli y Sanchez
 2026-06-27-padel-m1,2026-06-27-padel,Padel,1,Loss,Tournament,7ma categoría,octavos de final,1-6; 4-6,JuanG,Navarro y Lucero
 2026-06-29-padel-m1,2026-06-29-padel,Padel,1,Win,Friendly,-,-,4-6; 7-6; 6-3,JuanG,AguB y EmiR
-2026-06-29-padel-m1,2026-06-29-padel,Padel,1,Loss,Friendly,-,-,4-6 4-6,EmiR,GuidoA y BrunoR
+2026-06-29-padel-m2,2026-06-29-padel,Padel,2,Loss,Friendly,-,-,4-6 4-6,EmiR,GuidoA y BrunoR
 2026-07-04-padel-m1,2026-07-04-padel,Padel,1,Win,Friendly,-,-,6-4 4-6 7-6,JuanG,JuanpG y AguB
 2026-07-13-padel-m1,2026-07-13-padel,Padel,1,Win,Friendly,-,-,4-6; 7-6; 6-3,JuanG,AguB y EmiR
 2026-07-14-padel-m1,2026-07-14-padel,Padel,1,Win,Friendly,-,-,6-2,Faka,MauroP y Patts
-2026-07-14-padel-m1,2026-07-14-padel,Padel,1,Win,Friendly,-,-,6-0,Faka,JuanpG y JuanG
-2026-07-14-padel-m1,2026-07-14-padel,Padel,1,Loss,Friendly,-,-,3-6,"Faka",AguB y EmiR
+2026-07-14-padel-m2,2026-07-14-padel,Padel,2,Win,Friendly,-,-,6-0,Faka,JuanpG y JuanG
+2026-07-14-padel-m3,2026-07-14-padel,Padel,3,Loss,Friendly,-,-,3-6,"Faka",AguB y EmiR
