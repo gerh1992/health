@@ -87,7 +87,7 @@ def compute_bands(rows):
 
         reasons = []
         if red_streak >= RED_CONSECUTIVE_DAYS and sleep_bad:
-            out[r["date"]] = ("red", "HRV↓≥10% ×%dd y sueño <7h" % red_streak)
+            out[r["date"]] = ("red", "HRV↓≥10%% ×%dd y sueño <7h" % red_streak)
             continue
 
         # Green check first (all clear)
