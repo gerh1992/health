@@ -49,12 +49,13 @@ Session_Id,Date,Category,Activity,Duration_Minutes,RPE,Session_Tag,Comments
 2026-06-30-soccer,2026-06-30,Soccer,Fútbol 5,60,7,Match,Partidito tranquilo entre amigos.
 2026-07-01-strength,2026-07-01,Strength,Gym Session,60,-,Low,Gym upper low; duración 60 min inferida por convención existente del repo.
 2026-07-02-strength,2026-07-02,Strength,Gym Session,60,-,High,Sesión high de gym; squats 3x4 110kg. Duración 60 min inferida por convención existente del repo.
-2026-07-04-padel,2026-07-04,Padel,Padel Session,90,9,Match
+2026-07-04-padel,2026-07-04,Padel,Padel Session,90,9,Match,
 2026-07-06-soccer,2026-07-06,Soccer,Fútbol 7,60,9,Match,"Jugue bien el fulbito, me falta estado todavia pero cnotento"
 2026-07-07-soccer,2026-07-07,Soccer,Fútbol 5,60,8,Match,Partidito tranquilo entre amigos
 2026-07-09-strength,2026-07-09,Strength,Gym Session,60,7,Low,Dia tranqui en el gym
 2026-07-13-padel,2026-07-13,Padel,Padel Session,90,9,Match,"Partido aspero contra gente mejor, jugue bien"
-2026-07-14-padel,2026-07-14,Padel,Padel Session,90,7,Match,"Partido chill con amigos"2026-09-19-padel,2026-09-19,Padel,Padel Session,120,8,Match,
+2026-07-14-padel,2026-07-14,Padel,Padel Session,90,7,Match,"Partido chill con amigos"
+2026-09-19-padel,2026-09-19,Padel,Padel Session,120,8,Match,
 2026-09-17-padel,2026-09-17,Padel,Padel Session,90,8,Match,
 2026-09-10-padel,2026-09-10,Padel,Padel Session,90,8,Match,
 2026-09-08-padel,2026-09-08,Padel,Padel Session,120,8,Match,
