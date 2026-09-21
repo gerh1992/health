@@ -53,7 +53,7 @@ If a review is session-level and cannot yet be tied to a specific match, `Match_
 - `Match_Id`: Specific match row in `match_details.csv` or `-`.
 - `Sport`: currently `Padel`.
 - `Role`: `Drive`, `Reves`, or `-`.
-- `Partner_Name`: teammate name or `-`.
+- `Partner_Id`: Foreign Key linking to `players.csv` or `-`.
 - `Partner_Level_Relative`: `Lower`, `Similar`, `Higher`, or `-`.
 - `Opponent_Level_Notes`: short free text if relevant, else `-`.
 - `Match_Context`: `Tournament`, `Friendly`, `Practice`, or `-`.

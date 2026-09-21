@@ -14,6 +14,7 @@ FILES=(
   "match_details.csv"
   "padel_match_reviews.csv"
   "supplements.csv"
+  "players.csv"
 )
 
 mkdir -p "$DEST_DIR"

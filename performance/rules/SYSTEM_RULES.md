@@ -10,6 +10,7 @@ All files are located relative to the repository root `/home/ubuntu/.hermes/data
   - `performance/data/match_details.csv`
   - `performance/data/padel_match_reviews.csv`
   - `performance/data/supplements.csv`
+  - `performance/data/players.csv`
 - Validation script: `performance/ops/validate_log.py`
 
 ---
@@ -61,8 +62,9 @@ Stores details for competitive team sports at the individual-match level. Multip
 - `Tournament_Category`: Level of the tournament (e.g. `7ma`, `6ta`, `1ra` or `-` if friendly/recreational).
 - `Match_Stage`: Stage label (e.g. `group stage`, `quarterfinal`, `semifinal` or `-`).
 - `Score`: String score (e.g. `6-4 6-2`, `5-3` or `-`).
-- `Partner`: Name of teammate(s) or `-`.
-- `Opponents`: Name of opponent(s) or `-`.
+- `Partner_Id`: Foreign Key linking to `players.csv` or `-`.
+- `Opponent_1_Id`: Foreign Key linking to `players.csv` or `-`.
+- `Opponent_2_Id`: Foreign Key linking to `players.csv` or `-`.
 
 ### 5. `supplements.csv` (Daily Supplement Adherence Log)
 Logs daily intake of supplements. Exactly one row per date.
@@ -82,7 +84,7 @@ Stores subjective tactical reviews for pattern detection and future experimentat
 - `Match_Id`: Foreign Key linking to `match_details.csv` or `-` if not yet attributed.
 - `Sport`: Enum: `Padel`.
 - `Role`: Enum: `Drive`, `Reves`, `-`.
-- `Partner_Name`: String or `-`.
+- `Partner_Id`: Foreign Key linking to `players.csv` or `-`.
 - `Partner_Level_Relative`: Enum: `Lower`, `Similar`, `Higher`, `-`.
 - `Opponent_Level_Notes`: String or `-`.
 - `Match_Context`: Enum: `Tournament`, `Friendly`, `Practice`, `-`.
@@ -102,6 +104,16 @@ Stores subjective tactical reviews for pattern detection and future experimentat
 - `Mental_Composure_Score`: Integer `1-5` or `-`.
 - `Key_Pattern_Tags`: Pipe-delimited tags or `-`.
 - `Free_Notes`: String or `-`.
+
+### 7. `players.csv` (Player Master Catalog)
+Stores unified player entities to enable relational integrity and reliable analytical aggregations.
+- `Player_Id`: Primary Key (format: `p-<slug>`, e.g. `p-juanpi-g`, `p-guido-r`).
+- `Display_Name`: String representing the canonical display name (e.g. `JuanpiG`).
+- `Aliases`: Pipe-delimited string of known nicknames or legacy representations (e.g. `JPG|JuanpG|JuampiG`).
+- `Category`: Enum: `Regular`, `Tournament`, `Pro`, `-`.
+- `Hand`: Enum: `Right`, `Left`, `-`.
+- `Preferred_Side`: Enum: `Drive`, `Reves`, `Both`, `-`.
+- `Notes`: Free-text string or `-`.
 
 ---
 

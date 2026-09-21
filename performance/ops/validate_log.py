@@ -37,6 +37,9 @@ def main():
     referenced_session_ids_in_reviews = set()
     referenced_match_ids_in_reviews = set()
     match_ids = set()
+    player_ids = set()
+    referenced_player_ids_in_matches = []
+    referenced_player_ids_in_reviews = []
     primary_key_columns = {
         "biometrics.csv": "Date",
         "sessions.csv": "Session_Id",
@@ -44,6 +47,7 @@ def main():
         "match_details.csv": "Match_Id",
         "padel_match_reviews.csv": "Review_Id",
         "supplements.csv": "Date",
+        "players.csv": "Player_Id",
     }
     seen_primary_keys = {file_name: set() for file_name in files_schema.keys()}
 
@@ -88,6 +92,14 @@ def main():
 
             # Check rows
             for line_num, row in enumerate(reader, start=2):
+                if None in row:
+                    errors.append({
+                        "file": file_name,
+                        "line": line_num,
+                        "col": "Columns",
+                        "msg": f"Row has extra columns/fields: {row[None]}"
+                    })
+
                 # Validate Date column if present
                 if "Date" in row:
                     date_val = row["Date"]
@@ -196,13 +208,22 @@ def main():
                             })
 
                 # Collect and track relationships
-                if file_name == "sessions.csv":
+                if file_name == "players.csv":
+                    pid = row.get("Player_Id")
+                    if pid:
+                        player_ids.add(pid)
+                elif file_name == "sessions.csv":
                     session_ids.add(row.get("Session_Id"))
                 elif file_name == "fitness_metrics.csv":
                     referenced_session_ids_in_metrics.add(row.get("Session_Id"))
                 elif file_name == "match_details.csv":
                     referenced_session_ids_in_matches.add(row.get("Session_Id"))
                     match_ids.add(row.get("Match_Id"))
+
+                    for col in ["Partner_Id", "Opponent_1_Id", "Opponent_2_Id"]:
+                        val = row.get(col)
+                        if val and val != "-":
+                            referenced_player_ids_in_matches.append((val, line_num, col))
 
                     match_number = row.get("Match_Number")
                     if match_number != "-":
@@ -222,6 +243,9 @@ def main():
                     review_match_id = row.get("Match_Id")
                     if review_match_id != "-":
                         referenced_match_ids_in_reviews.add(review_match_id)
+                    p_id = row.get("Partner_Id")
+                    if p_id and p_id != "-":
+                        referenced_player_ids_in_reviews.append((p_id, line_num, "Partner_Id"))
 
                     for score_col in [
                         "Drive_Intervention_Score",
@@ -290,6 +314,26 @@ def main():
                 "line": "N/A",
                 "col": "Match_Id",
                 "msg": f"Foreign Key Error: Match_Id '{mid}' referenced in padel_match_reviews does not exist in match_details.csv"
+            })
+
+    # Check that every player referenced in match_details exists in players.csv
+    for pid, line_num, col in referenced_player_ids_in_matches:
+        if pid not in player_ids:
+            errors.append({
+                "file": "match_details.csv",
+                "line": line_num,
+                "col": col,
+                "msg": f"Foreign Key Error: Player_Id '{pid}' referenced in match_details does not exist in players.csv"
+            })
+
+    # Check that every player referenced in padel reviews exists in players.csv
+    for pid, line_num, col in referenced_player_ids_in_reviews:
+        if pid not in player_ids:
+            errors.append({
+                "file": "padel_match_reviews.csv",
+                "line": line_num,
+                "col": col,
+                "msg": f"Foreign Key Error: Player_Id '{pid}' referenced in padel_match_reviews does not exist in players.csv"
             })
 
     # 4. Print Summary and Exit

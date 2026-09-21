@@ -248,12 +248,17 @@
           "required": true
         },
         {
-          "name": "Partner",
+          "name": "Partner_Id",
           "type": "string",
           "required": true
         },
         {
-          "name": "Opponents",
+          "name": "Opponent_1_Id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Opponent_2_Id",
           "type": "string",
           "required": true
         }
@@ -371,7 +376,7 @@
           "required": true
         },
         {
-          "name": "Partner_Name",
+          "name": "Partner_Id",
           "type": "string",
           "required": true
         },
@@ -489,6 +494,62 @@
         },
         {
           "name": "Free_Notes",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "players.csv": {
+      "columns": [
+        {
+          "name": "Player_Id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Display_Name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Aliases",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Category",
+          "type": "enum",
+          "allowed": [
+            "Regular",
+            "Tournament",
+            "Pro",
+            "-"
+          ],
+          "required": true
+        },
+        {
+          "name": "Hand",
+          "type": "enum",
+          "allowed": [
+            "Right",
+            "Left",
+            "-"
+          ],
+          "required": true
+        },
+        {
+          "name": "Preferred_Side",
+          "type": "enum",
+          "allowed": [
+            "Drive",
+            "Reves",
+            "Both",
+            "-"
+          ],
+          "required": true
+        },
+        {
+          "name": "Notes",
           "type": "string",
           "required": true
         }
