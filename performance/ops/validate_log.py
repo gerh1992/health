@@ -6,6 +6,12 @@ import json
 import re
 from datetime import datetime
 
+# Sanity ranges for biometric plausible values (catch typos, not medical truth)
+HRV_MIN, HRV_MAX = 15, 150
+RHR_MIN, RHR_MAX = 35, 120
+SLEEP_MIN, SLEEP_MAX = 0.0, 24.0
+
+
 def main():
     # Resolve relative paths to keep the script portable
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -199,6 +205,15 @@ def main():
                                     "col": col_name,
                                     "msg": f"Value '{val}' must be non-negative or '-'"
                                 })
+                            # Sanity range for sleep hours
+                            if col_name == "Sleep_Hours":
+                                if not (SLEEP_MIN <= dec_val <= SLEEP_MAX):
+                                    errors.append({
+                                        "file": file_name,
+                                        "line": line_num,
+                                        "col": col_name,
+                                        "msg": f"Value '{val}' outside plausible range ({SLEEP_MIN}-{SLEEP_MAX}). Possible typo?"
+                                    })
                         except ValueError:
                             errors.append({
                                 "file": file_name,
@@ -206,6 +221,27 @@ def main():
                                 "col": col_name,
                                 "msg": f"Value '{val}' must be a decimal/float or '-'"
                             })
+
+                    # Sanity ranges for HRV/RHR (after integer type validated above)
+                    if col_type == "integer" and val != "-":
+                        try:
+                            ival = int(val)
+                            if col_name == "HRV_Morning" and not (HRV_MIN <= ival <= HRV_MAX):
+                                errors.append({
+                                    "file": file_name,
+                                    "line": line_num,
+                                    "col": col_name,
+                                    "msg": f"HRV '{val}' outside plausible range ({HRV_MIN}-{HRV_MAX}). Possible typo?"
+                                })
+                            if col_name == "RHR_Night" and not (RHR_MIN <= ival <= RHR_MAX):
+                                errors.append({
+                                    "file": file_name,
+                                    "line": line_num,
+                                    "col": col_name,
+                                    "msg": f"RHR '{val}' outside plausible range ({RHR_MIN}-{RHR_MAX}). Possible typo?"
+                                })
+                        except ValueError:
+                            pass  # already reported above
 
                 # Collect and track relationships
                 if file_name == "players.csv":
@@ -336,7 +372,86 @@ def main():
                 "msg": f"Foreign Key Error: Player_Id '{pid}' referenced in padel_match_reviews does not exist in players.csv"
             })
 
-    # 4. Print Summary and Exit
+    # 3.5 Validate Match_Id invariant and sequential Match_Number per session
+    print("🎯 Validating Match_Id invariant and Match_Number sequence...")
+
+    # Collect match rows with line numbers
+    match_rows = []  # (session_id, match_id, match_number, line_num)
+    with open(os.path.join(data_dir, "match_details.csv"), "r", encoding="utf-8-sig") as f:
+        reader = csv.DictReader(f)
+        for line_num, row in enumerate(reader, start=2):
+            match_rows.append((
+                row.get("Session_Id"),
+                row.get("Match_Id"),
+                row.get("Match_Number"),
+                line_num,
+            ))
+
+    # Build per-session list of (match_number, match_id, line_num) preserving file order
+    per_session = {}
+    for sid, mid, mn, ln in match_rows:
+        per_session.setdefault(sid, []).append((mn, mid, ln))
+
+    for sid, entries in per_session.items():
+        # 1. Match_Id must equal Session_Id + "-m" + Match_Number
+        for mn, mid, ln in entries:
+            expected = f"{sid}-m{mn}"
+            if mid != expected:
+                errors.append({
+                    "file": "match_details.csv",
+                    "line": ln,
+                    "col": "Match_Id",
+                    "msg": f"Match_Id '{mid}' no coincide con Session_Id+'-m'+Match_Number (esperado '{expected}')"
+                })
+        # 2. Match_Number must be a strict ascending sequence 1,2,3...
+        try:
+            nums = [int(mn) for mn, _, _ in entries]
+        except (ValueError, TypeError):
+            continue  # integer tipo already reported above
+        if nums != list(range(1, len(nums) + 1)):
+            errors.append({
+                "file": "match_details.csv",
+                "line": entries[0][2],
+                "col": "Match_Number",
+                "msg": f"Match_Number en sesión '{sid}' no es secuencia 1..{len(nums)} (encontrado {nums})"
+            })
+
+    # 3.6 Validate that Session_Id embeds a date matching the row's Date (sessions)
+    #     and that Match_Id's date prefix matches its Session_Id's date (match_details)
+    print("📅 Validating embedded dates in Session_Id / Match_Id...")
+
+    # sessions.csv: Session_Id should start with the row's Date
+    with open(os.path.join(data_dir, "sessions.csv"), "r", encoding="utf-8-sig") as f:
+        reader = csv.DictReader(f)
+        for line_num, row in enumerate(reader, start=2):
+            sid = row.get("Session_Id")
+            date_val = row.get("Date")
+            if sid and date_val and not sid.startswith(date_val):
+                errors.append({
+                    "file": "sessions.csv",
+                    "line": line_num,
+                    "col": "Session_Id",
+                    "msg": f"Session_Id '{sid}' no empieza con la fecha de la fila '{date_val}'"
+                })
+
+    # match_details.csv: Match_Id date prefix must equal Session_Id date prefix
+    with open(os.path.join(data_dir, "match_details.csv"), "r", encoding="utf-8-sig") as f:
+        reader = csv.DictReader(f)
+        for line_num, row in enumerate(reader, start=2):
+            sid = row.get("Session_Id")
+            mid = row.get("Match_Id")
+            if sid and mid:
+                sid_date = sid[:10]
+                mid_date = mid[:10]
+                if sid_date != mid_date:
+                    errors.append({
+                        "file": "match_details.csv",
+                        "line": line_num,
+                        "col": "Match_Id",
+                        "msg": f"Fecha en Match_Id '{mid}' ({mid_date}) no coincide con la de Session_Id '{sid}' ({sid_date})"
+                    })
+
+        # 4 # 4. Print Summary and Exit
     print("-" * 60)
     print(f"📊 Validation Summary:")
     print(f"   - Total errors found: {len(errors)}")
