@@ -25,6 +25,7 @@ Incluye:
 - Reglas de reviews tácticos de pádel: `rules/PADEL_REVIEW_RULES.md`
 - Reglas de readiness (gate de ejecución diario verde/amarillo/rojo): `rules/READINESS_RULES.md`
 - Template de plan semanal: `plans/WEEKLY_PLAN_TEMPLATE.md`
+- Experimentos activos (hipótesis testeables): `experiments/`
 - Script de validación: `ops/validate_log.py`
 - Script de readiness (lee biometrics.csv y computa la franja): `ops/regla_readiness.py`
 - Script de backup canónico: `ops/backup_performance_data.sh`
