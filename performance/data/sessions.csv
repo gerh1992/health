@@ -60,3 +60,4 @@ Session_Id,Date,Category,Activity,Duration_Minutes,RPE,Session_Tag,Comments
 2026-09-10-padel,2026-09-10,Padel,Padel Session,90,8,Match,
 2026-09-08-padel,2026-09-08,Padel,Padel Session,120,8,Match,
 2026-09-22-padel,2026-09-22,Padel,Padel Session,90,8,Match,
+2026-09-22-padel-class,2026-09-22,Padel,Padel Class,60,6,Technical,Clase 8AM (duracion/RPE estimados)
