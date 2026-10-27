@@ -17,19 +17,19 @@ Session_Id,Date,Category,Activity,Duration_Minutes,RPE,Session_Tag,Comments
 2026-05-22-padel,2026-05-22,Padel,Padel Session,90,-,Match,gané
 2026-05-23-recovery,2026-05-23,Recovery,Recovery Session,60,-,Recovery,Resaca; muy tranquilo; tome los suplementos
 2026-05-25-recovery,2026-05-25,Recovery,Recovery Session,60,-,Recovery,Tome todos los suplementos y el retinol
-2026-05-26-padel,2026-05-26,Padel,Padel Session,90,-,Match,Tome todos los suplementos (incluso los nocturnos)
+2026-05-26-padel,2026-05-26,Padel,Padel Session,90,-,Technical,Tome todos los suplementos (incluso los nocturnos)
 2026-05-27-strength,2026-05-27,Strength,Gym Session,60,-,High,Piernas high; me senti bastante bien
-2026-05-28-padel,2026-05-28,Padel,Padel Session,90,-,Match,Tome todos los suplementos; intensidad normal; no senti mucha carga extra
+2026-05-28-padel,2026-05-28,Padel,Padel Session,90,-,Technical,Tome todos los suplementos; intensidad normal; no senti mucha carga extra
 2026-05-31-recovery,2026-05-31,Recovery,Recovery Session,60,-,Recovery,Ayer tome mucho; me senti muy decaido; tome todos los suplementos y retinol
 2026-06-01-strength,2026-06-01,Strength,Gym Session,60,7,Low,"Me senti bien; tome proteina, creatina y colageno"
-2026-06-02-padel,2026-06-02,Padel,Padel Session,90,-,Match,Jugue al padel
+2026-06-02-padel,2026-06-02,Padel,Padel Session,90,-,Technical,Jugue al padel
 2026-06-02-strength,2026-06-02,Strength,Gym Session,60,-,High,Lower high + padel; tome todos los suplementos
 2026-06-03-recovery,2026-06-03,Recovery,Recovery Session,60,-,Recovery,Tome todo
-2026-06-04-padel,2026-06-04,Padel,Padel Session,90,-,Match,Padel; suplementos: todos
-2026-06-05-padel,2026-06-05,Padel,Padel Session,90,-,Match,Padel; suplementos: todos menos ashwagandha
+2026-06-04-padel,2026-06-04,Padel,Padel Session,90,-,Technical,Padel; suplementos: todos
+2026-06-05-padel,2026-06-05,Padel,Padel Session,90,-,Technical,Padel; suplementos: todos menos ashwagandha
 2026-06-06-strength,2026-06-06,Strength,Gym Session,60,-,Low,Gym lower low; suplementos: todos menos ashwagandha
 2026-06-07-recovery,2026-06-07,Recovery,Recovery Session,60,-,Recovery,Nada; suplementos: todos
-2026-06-08-padel,2026-06-08,Padel,Padel Session,90,-,Match,Padel; suplementos: todos
+2026-06-08-padel,2026-06-08,Padel,Padel Session,90,-,Technical,Padel; suplementos: todos
 2026-06-08-strength,2026-06-08,Strength,Gym Session,60,9,High,Gym lower high; resto accesorios; suplementos: todos
 2026-06-09-padel,2026-06-09,Padel,Padel Session,90,-,Match,Padel; suplementos diurnos ok; faltan los nocturnos
 2026-06-10-strength,2026-06-10,Strength,Gym Session,60,5,Low,Gym upper low tranquilo; duracion inferida 60 min; suplementos: todos.
@@ -54,22 +54,18 @@ Session_Id,Date,Category,Activity,Duration_Minutes,RPE,Session_Tag,Comments
 2026-07-07-soccer,2026-07-07,Soccer,Fútbol 5,60,8,Match,Partidito tranquilo entre amigos
 2026-07-09-strength,2026-07-09,Strength,Gym Session,60,7,Low,Dia tranqui en el gym
 2026-07-13-padel,2026-07-13,Padel,Padel Session,90,9,Match,"Partido aspero contra gente mejor, jugue bien"
-2026-07-14-padel,2026-07-14,Padel,Padel Session,90,7,Match,"Partido chill con amigos"
+2026-07-14-padel,2026-07-14,Padel,Padel Session,90,7,Match,Partido chill con amigos
 2026-09-19-padel,2026-09-19,Padel,Padel Session,120,8,Match,
 2026-09-17-padel,2026-09-17,Padel,Padel Session,90,8,Match,
 2026-09-10-padel,2026-09-10,Padel,Padel Session,90,8,Match,
 2026-09-08-padel,2026-09-08,Padel,Padel Session,120,8,Match,
 2026-09-22-padel,2026-09-22,Padel,Padel Session,90,8,Match,
 2026-09-22-padel-class,2026-09-22,Padel,Padel Class,60,6,Technical,Clase 8AM (duracion/RPE estimados)
-
 2026-10-21-padel,2026-10-21,Padel,Padel Session,90,-,Match,3 sets vs AguB/Bisku (duracion estimada)
-
 2026-10-22-padel,2026-10-22,Padel,Padel Session,60,-,Match,1 set 7-6 vs EmiR/JuanS (duracion estimada)
-
 2026-10-26-padel,2026-10-26,Padel,Padel Session,120,-,Match,3 sets 6-4 5-7 7-6 vs GuidoA/Pablito nivel alto (duracion estimada)
 2026-10-27-padel,2026-10-27,Padel,Padel Session,60,-,Technical,Entrenamiento mañana (duracion estimada)
 2026-10-27-soccer,2026-10-27,Soccer,Futbol 5,90,-,Match,Futbol a la tarde (duracion estimada)
-
 2026-10-15-padel,2026-10-15,Padel,Padel Session,120,-,Match,3 sets 6-4 0-6 6-0 vs BrunoR/BrunoPrimo nivel alto (duracion estimada)
 
 2026-10-08-padel,2026-10-08,Padel,Padel Session,90,-,Match,2 sets 6-4 6-2 vs JuanS/JuanG (duracion estimada)
