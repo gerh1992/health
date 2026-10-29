@@ -29,6 +29,8 @@ Y deja preparado:
 ```text
 health/
   README.md
+  AGENTS.md          # Protocolo maestro y router para IAs
+  TASKS.md           # Backlog de mejoras técnicas y scripts
   .gitignore
   principles/
     README.md
@@ -62,20 +64,19 @@ health/
 ```
 
 ## Orden de lectura recomendado para una IA o persona nueva
-1. `principles/TRAINING.md` *(nuevo: el porqué primero)*
-2. `context/health-brief.md`
-3. `context/profile.yaml`
-4. `context/current-state.md`
-5. `context/decision-rules.md`
-6. `context/data-sources.yaml`
-7. `performance/README.md`
-7. `performance/rules/SYSTEM_RULES.md`
-8. `performance/data/biometrics.csv`
-9. `performance/data/sessions.csv`
-10. `performance/data/fitness_metrics.csv`
-11. `performance/data/match_details.csv`
-12. `performance/data/supplements.csv`
-13. `medical/README.md`
+1. `AGENTS.md` *(protocolo de operación y routing de tareas)*
+2. `principles/TRAINING.md` *(el porqué primero)*
+3. `context/health-brief.md`
+4. `context/profile.yaml`
+5. `context/current-state.md`
+6. `context/decision-rules.md`
+7. `context/data-sources.yaml`
+8. `performance/README.md`
+9. `performance/rules/SYSTEM_RULES.md`
+10. `performance/schema/SCHEMA.json`
+11. `performance/data/*.csv`
+12. `medical/README.md`
+13. `TASKS.md` *(si se trabaja en evolución o código)*
 
 ## Workflow acordado
 1. `git pull --rebase`
