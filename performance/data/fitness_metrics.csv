@@ -17,3 +17,8 @@ m-2026-06-08-28,2026-06-08-strength,Calves Press Machine,Strength,160.0,kg,3,6,F
 m-2026-06-15-29,2026-06-15-strength,Back Squat,Strength,110.0,kg,3,4,True,7
 m-2026-06-15-30,2026-06-15-strength,Calves Press Machine,Strength,160.0,kg,3,10,False,7
 m-2026-07-02-31,2026-07-02-strength,Back Squat,Strength,110.0,kg,3,4,True,-
+
+m-2026-11-02-1,2026-11-02-strength,Pull Up,Strength,67.0,kg,3,6,True,7
+m-2026-11-02-2,2026-11-02-strength,Split Squat,Strength,32.0,kg,3,8,True,7
+m-2026-11-02-3,2026-11-02-strength,KB Snatch,Strength,15.0,kg,3,6,True,7
+m-2026-11-02-4,2026-11-02-strength,Landmine Press,Strength,30.0,kg,3,6,True,7
